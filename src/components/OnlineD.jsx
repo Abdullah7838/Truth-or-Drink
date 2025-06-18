@@ -6,16 +6,19 @@ function OnlineD({ setMainUsername }) {
   const [username, setUsername] = useState("");
   const [roomInfo, setRoomInfo] = useState(null);
   const [error, setError] = useState("");
+  const [button, setButton] = useState("join room");
   const navigate = useNavigate();
   const { roomId } = useParams();
 
   useEffect(() => {
     if (roomId) {
+      setButton("join room");
       setMainUsername("");
       axios
         .get(`https://truth-or-dare-backend-1kg2.onrender.com/drink/api/rooms/${roomId}`)
         .then((res) => setRoomInfo(res.data))
         .catch((err) => {
+          setButton("join room");
           console.error("Failed to fetch room info:", err);
           setError("❌ Failed to load room. Make sure it exists.");
         });
@@ -24,8 +27,9 @@ function OnlineD({ setMainUsername }) {
 
   const handleJoin = async () => {
     const trimmedName = username.trim();
-
+    setButton("Joining...");
     if (trimmedName === "") {
+      setButton("join room");
       setError("⚠️ Username is required");
       return;
     }
@@ -35,13 +39,14 @@ function OnlineD({ setMainUsername }) {
         `https://truth-or-dare-backend-1kg2.onrender.com/drink/api/${roomId}/join`,
         { username: trimmedName }
       );
-
+setButton("join room");
       if (res.status === 200) {
         setMainUsername(trimmedName);
         setError("");
         navigate(`/drooms/${roomId}/dgame`);
       }
     } catch (err) {
+      setButton("join room");
       console.error("Error joining room:", err);
       const msg =
         err.response?.status === 409
@@ -92,7 +97,7 @@ function OnlineD({ setMainUsername }) {
           onClick={handleJoin}
           className="w-full bg-white text-blue-600 font-bold py-2 rounded-lg hover:bg-blue-100 transition duration-300"
         >
-          Join Room
+          {button}
         </button>
       </div>
 
