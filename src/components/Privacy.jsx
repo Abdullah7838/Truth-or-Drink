@@ -7,7 +7,7 @@ const Privacy = () => {
         <h1 className="text-4xl font-extrabold mb-6 text-white drop-shadow-md text-center">Privacy Policy</h1>
         
         <p className="mb-4 text-white/90">
-          Your privacy is important to us. This policy explains how we collect, use, and protect your data when you use the Truth or Dare game.
+          Your privacy is important to us. This policy explains how we collect, use, and protect your data when you use the Truth or Drink game.
         </p>
 
         <h2 className="text-2xl font-bold mt-6 mb-2">1. Information We Collect</h2>

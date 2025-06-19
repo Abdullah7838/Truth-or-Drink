@@ -210,7 +210,7 @@ useEffect(() => {
   }, [roomId, myusername]);
 
   const handleShare = () => {
-    const fullUrl = `${window.location.origin}/rooms/${roomId}/game`;
+    const fullUrl = `${window.location.origin}/drooms/${roomId}/dgame`;
     navigator.clipboard
       .writeText(fullUrl)
       .then(() => {

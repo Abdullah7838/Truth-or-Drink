@@ -265,7 +265,7 @@ useEffect(() => {
 
         {isMyTurn && (
           <p className="text-green-600 font-semibold text-center animate-bounce mb-4 text-lg">
-            ✅ Your turn! Choose: Truth or Dare
+            ✅ Your turn! Choose: Truth or Drink
           </p>
         )}
 
@@ -299,7 +299,7 @@ useEffect(() => {
                 : "bg-gray-400 cursor-not-allowed"
             }`}
           >
-            😈 Dare
+            😈 Drink
           </button>
         </div>
       </div>

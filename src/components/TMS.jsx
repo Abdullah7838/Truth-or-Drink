@@ -7,7 +7,7 @@ const TMS = () => {
         <h1 className="text-4xl font-extrabold mb-6 text-white drop-shadow-md text-center">Terms & Conditions</h1>
 
         <p className="mb-4 text-white/90">
-          Welcome to Truth or Dare! By accessing or using this website and game, you agree to the following terms and conditions.
+          Welcome to Truth or Drink! By accessing or using this website and game, you agree to the following terms and conditions.
         </p>
 
         <h2 className="text-2xl font-bold mt-6 mb-2">1. Use of the Game</h2>
@@ -34,7 +34,7 @@ const TMS = () => {
 
         <h2 className="text-2xl font-bold mt-6 mb-2">5. Limitation of Liability</h2>
         <p className="text-white/90 mb-4">
-          We are not responsible for any discomfort, offense, or damage caused by user-generated dares or truths. Use your own judgment before participating.
+          We are not responsible for any discomfort, offense, or damage caused by user-generated drink or truths. Use your own judgment before participating.
         </p>
 
         <h2 className="text-2xl font-bold mt-6 mb-2">6. Changes to Terms</h2>

@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Branding */}
         <div className="text-2xl font-bold tracking-wide drop-shadow-md">
-          🎮 TruthOrDare
+          🎮 TruthOrDrink
         </div>
 
         {/* Navigation Links */}
