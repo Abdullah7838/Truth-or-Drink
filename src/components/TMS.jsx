@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const TMS = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-700 px-6 py-12 text-white flex items-center justify-center">
@@ -29,7 +29,7 @@ const TMS = () => {
 
         <h2 className="text-2xl font-bold mt-6 mb-2">4. Data & Privacy</h2>
         <p className="text-white/90 mb-4">
-          We collect minimal data only to support multiplayer functionality. You can read more in our <a href="/privacy" className="underline text-white font-semibold hover:text-black">Privacy Policy</a>.
+          We collect minimal data only to support multiplayer functionality. You can read more in our <Link to="/privacy" className="underline text-white font-semibold hover:text-black">Privacy Policy</Link>.
         </p>
 
         <h2 className="text-2xl font-bold mt-6 mb-2">5. Limitation of Liability</h2>

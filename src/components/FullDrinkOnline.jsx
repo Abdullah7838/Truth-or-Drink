@@ -274,7 +274,7 @@ useEffect(() => {
             <p className="text-lg font-bold text-purple-700">
               🧠 {currentUser} must do:
             </p>
-            <p className="text-gray-800 mt-2">{currentPrompt.text}</p>
+            <p className="text-black mt-2 font-bold">{currentPrompt.text}</p>
           </div>
         )}
 

@@ -102,6 +102,7 @@ const HowToPlay = () => {
           </motion.div>
         ))}
       </div>
+      <div className='pt-16'></div>
     </div>
   );
 };

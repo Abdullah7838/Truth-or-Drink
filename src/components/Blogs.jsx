@@ -1,58 +1,96 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import blog1 from '../assets/blog1.1.jpeg'
+import blog2 from '../assets/blog2.2.jpeg'
+import blog3 from '../assets/blog3.1.jpeg'
+import blog4 from '../assets/blog4.2.jpeg'
+import blog5 from '../assets/blog4.1.jpeg'
+import { Helmet } from "react-helmet-async";
+
+
+const blogs = [
+    {
+        id: 1,
+        image: `${blog1}`,
+        title: "150 Juicy Truth or Drink Questions: Bold, Fun, and... Daring for Your Next Game Night",
+        link:"150-juicy-truth-or-drink-questions-bold-fun-and-daring-for-your-next-game-night",
+      },
+      {
+        id: 2,
+        image: `${blog2}`,
+        title: "110 Deep Truth or Drink Questions: Explore Your... True Feelings, Thoughts, and Secrets",
+        link:"110-deep-truth-or-drink-questions-explore-your-true-feelings-thoughts-and-secrets",
+      },
+      {
+        id: 3,
+        image: `${blog3}`,
+        title: "70 Fun Truth or Drink Questions for Game Night...",
+        link:"70-fun-truth-or-drink-questions-for-game-night"
+      },
+      {
+        id: 4,
+        image: `${blog4}`,
+        title: "80 Funny Truth or Drink Questions: Hilarious and... Entertaining Questions for Your Next Game Night",
+        link:"80-funny-truth-or-drink-questions-hilarious-and-entertaining-questions-for-your-next-game-night",
+      },
+  {
+    id: 5,
+    image: `${blog5}`,
+    title: " 100 Fun Truth or Drink Questions for Game Night...",
+    link:"100-fun-truth-or-drink-questions-for-game-night",
+  },
+];
+
 
 function Blogs() {
-  const blogs = [
-    {
-      id: 1,
-      image: "https://source.unsplash.com/400x250/?adventure,nature",
-      title: "Exploring the Mountains",
-      body: "The mountains were quiet, cold, and full of mystery as we climbed higher each day.",
-    },
-    {
-      id: 2,
-      image: "https://source.unsplash.com/400x250/?beach,sunset",
-      title: "Sunset at the Beach",
-      body: "We sat silently as the sun dipped below the horizon, painting the sky with fire.",
-    },
-    {
-      id: 3,
-      image: "https://source.unsplash.com/400x250/?forest,hike",
-      title: "A Walk Through the Forest",
-      body: "Crunching leaves underfoot and chirping birds above made the forest feel truly alive.",
-    },
-    {
-      id: 4,
-      image: "https://source.unsplash.com/400x250/?desert,travel",
-      title: "Desert Wanderlust",
-      body: "Endless dunes stretched before us, golden in the sunlight and whispering with secrets.",
-    },
-  ];
-
-  const truncateWords = (text, count) => {
-    return text.split(" ").slice(0, count).join(" ") + "...";
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-purple-900 to-black text-white p-6 font-mono">
-      <h2 className="text-3xl font-bold text-center mb-10 text-white">Our Latest Blogs</h2>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-        {blogs.map((blog) => (
-          <Link key={blog.id} to={`/blogs/blog${blog.id}`}><div key={blog.id} className="bg-white text-black rounded-xl overflow-hidden shadow-lg flex flex-col">
-            <img
-              src={blog.image}
-              alt={blog.title}
-              className="w-full h-40 object-cover"
+    <>
+          <Helmet>
+            <title>Truth or Drink– Play Drinking Games Online or Offline Full Guide</title>
+            <meta
+              name="description"
+              content="Play Truth or Drink online or offline with friends. Choose a mode, spin the wheel, and enjoy fun challenges!"
             />
-            <div className="p-4 flex flex-col">
-              <h3 className="text-lg font-semibold mb-1">{blog.title}</h3>
-              <p className="text-sm text-gray-700">{truncateWords(blog.body, 8)}</p>
+            <meta
+              name="keywords"
+              content="truth or drink, online party game, spin wheel game, drink game , online game "
+            />
+            <meta property="og:title" content="Truth or Drink– Play Drinking Games Online or Offline Full Guide" />
+            <meta
+              property="og:description"
+              content="Play Truth or Drink with friends, online or offline! No signup required. Fun guaranteed!"
+            />
+            <meta property="og:type" content="website" />
+            <meta name="robots" content="index, follow" />
+          </Helmet>
+          
+    <div className="px-6 py-12 bg-white">
+      <h2 className="text-3xl font-bold text-center mb-10 text-black">
+        Latest Blogs
+      </h2>
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {blogs.map((blog) => (
+          <Link to={`/${blog.link}`} key={blog.id}>
+            <div
+              key={blog.id}
+              className="bg-white shadow-lg rounded-xl cursor-pointer overflow-hidden transition-transform hover:scale-105"
+            >
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold mb-2 text-black h-8">
+                  {blog.title}
+                </h3>
+              </div>
             </div>
-          </div>
           </Link>
         ))}
       </div>
     </div>
+    </>
   );
 }
 

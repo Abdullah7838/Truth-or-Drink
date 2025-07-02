@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Confetti from "react-confetti";
 import { FaBeer, FaQuestion } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const truthQuestions = [
   "What's the most embarrassing thing you've ever done?",
@@ -33,7 +34,7 @@ const truthQuestions = [
   "What’s the biggest mistake you've made in a relationship?",
   "Have you ever sent a message to the wrong person?",
   "Have you ever told a secret you promised to keep?",
-  "What rumor did you help spread — and regret?"
+  "What rumor did you help spread — and regret?",
 ];
 
 const drinkAnimations = ["🍺", "🥃", "🍷", "🍹", "🍸", "🥂"];
@@ -100,121 +101,149 @@ const OfflineDrink = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-800 via-pink-700 to-red-600 text-white flex flex-col items-center justify-center p-6 overflow-hidden relative">
-      {/* Horror Confetti Blast */}
-      <AnimatePresence>
-        {showScare && (
-          <>
-            <Confetti
-              key={confettiKey}
-              numberOfPieces={400}
-              recycle={false}
-              width={windowSize.width}
-              height={windowSize.height}
-              gravity={0.4}
-              colors={["#ff0000", "#990000", "#000000"]}
-              initialVelocityY={20}
-              run={true}
-            />
-            <motion.div
-              className="absolute inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center text-5xl font-extrabold text-red-600"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{
-                opacity: [0.3, 1, 0.3],
-                scale: [1, 1.3, 1],
-                rotate: [0, 5, -5, 0],
-              }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 2.2 }}
-            >
-              💀 Get Ready 💥
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+    <>
+      <Helmet>
+        <title>Truth or Drink– Play Offline With Friends</title>
+        <meta
+          name="description"
+          content="Play Truth or Drink Offline with friends. Choose a mode of truth or drink, spin the wheel, and enjoy fun challenges!"
+        />
+        <meta
+          name="keywords"
+          content="truth or drink, online and offline party game, online  and offline game, drink game , offline truth or drink "
+        />
+        <meta
+          property="og:title"
+          content="Truth or Drink– Ofline Play With Friends"
+        />
+        <meta
+          property="og:description"
+          content="Play Truth or Drink offline with friends. Choose a mode of truth or drink, spin the wheel, and enjoy fun challenges!"
+        />
+        <meta property="og:type" content="website" />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
 
-      {!started ? (
-        <div className="w-full max-w-md space-y-4 z-10">
-          <h1 className="text-3xl font-bold text-center">🎉 Truth or Drink</h1>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="Enter player name"
-              className="flex-1 p-3 rounded-lg text-white bg-transparent border border-black focus:outline-none focus:ring-2 focus:ring-black placeholder-white/60"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && addPlayer()}
-            />
-            <button
-              onClick={addPlayer}
-              className="bg-white text-black font-bold px-4 py-2 rounded-lg"
-            >
-              Add
-            </button>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {players.map((p, i) => (
-              <span
-                key={i}
-                className="bg-white/20 px-3 py-1 rounded-full text-sm"
-              >
-                {p}
-              </span>
-            ))}
-          </div>
-          <button
-            className="w-full mt-4 bg-green-500 hover:bg-green-600 py-3 rounded-lg font-bold"
-            onClick={startGame}
-          >
-            Start Game
-          </button>
-        </div>
-      ) : (
-        <div className="w-full max-w-xl text-center space-y-8 z-10">
-          <h2 className="text-2xl font-semibold">🎯 {players[turn]}'s Turn</h2>
-          <div className="flex justify-center gap-6">
-            <button
-              onClick={handleTruth}
-              className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-lg font-bold flex items-center gap-2"
-              disabled={showScare}
-            >
-              <FaQuestion /> Truth
-            </button>
-            <button
-              onClick={handleDrink}
-              className="bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-xl text-lg font-bold flex items-center gap-2"
-              disabled={showScare}
-            >
-              <FaBeer /> Drink
-            </button>
-          </div>
-
-          <AnimatePresence>
-            {!showScare && action && (
+      <div className="min-h-screen bg-gradient-to-br from-purple-800 via-pink-700 to-red-600 text-white flex flex-col items-center justify-center p-6 overflow-hidden relative">
+        {/* Horror Confetti Blast */}
+        <AnimatePresence>
+          {showScare && (
+            <>
+              <Confetti
+                key={confettiKey}
+                numberOfPieces={400}
+                recycle={false}
+                width={windowSize.width}
+                height={windowSize.height}
+                gravity={0.4}
+                colors={["#ff0000", "#990000", "#000000"]}
+                initialVelocityY={20}
+                run={true}
+              />
               <motion.div
-                key={action.content}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="mt-6 text-xl bg-white/10 p-6 rounded-xl backdrop-blur-md"
+                className="absolute inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center text-5xl font-extrabold text-red-600"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{
+                  opacity: [0.3, 1, 0.3],
+                  scale: [1, 1.3, 1],
+                  rotate: [0, 5, -5, 0],
+                }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 2.2 }}
               >
-                {action.type === "truth"
-                  ? `🗣️ ${action.content}`
-                  : `🍻 Take a sip! ${action.content}`}
+                💀 Get Ready 💥
               </motion.div>
-            )}
-          </AnimatePresence>
+            </>
+          )}
+        </AnimatePresence>
 
-          <button
-            onClick={nextTurn}
-            className="mt-6 bg-white/20 hover:bg-white/30 px-6 py-2 rounded-lg font-semibold"
-            disabled={showScare}
-          >
-            Next Turn
-          </button>
-        </div>
-      )}
-    </div>
+        {!started ? (
+          <div className="w-full max-w-md space-y-4 z-10">
+            <h1 className="text-3xl font-bold text-center">
+              🎉 Truth or Drink
+            </h1>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Enter player name"
+                className="flex-1 p-3 rounded-lg text-white bg-transparent border border-black focus:outline-none focus:ring-2 focus:ring-black placeholder-white/60"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && addPlayer()}
+              />
+              <button
+                onClick={addPlayer}
+                className="bg-white text-black font-bold px-4 py-2 rounded-lg"
+              >
+                Add
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {players.map((p, i) => (
+                <span
+                  key={i}
+                  className="bg-white/20 px-3 py-1 rounded-full text-sm"
+                >
+                  {p}
+                </span>
+              ))}
+            </div>
+            <button
+              className="w-full mt-4 bg-green-500 hover:bg-green-600 py-3 rounded-lg font-bold"
+              onClick={startGame}
+            >
+              Start Game
+            </button>
+          </div>
+        ) : (
+          <div className="w-full max-w-xl text-center space-y-8 z-10">
+            <h2 className="text-2xl font-semibold">
+              🎯 {players[turn]}'s Turn
+            </h2>
+            <div className="flex justify-center gap-6">
+              <button
+                onClick={handleTruth}
+                className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-lg font-bold flex items-center gap-2"
+                disabled={showScare}
+              >
+                <FaQuestion /> Truth
+              </button>
+              <button
+                onClick={handleDrink}
+                className="bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-xl text-lg font-bold flex items-center gap-2"
+                disabled={showScare}
+              >
+                <FaBeer /> Drink
+              </button>
+            </div>
+
+            <AnimatePresence>
+              {!showScare && action && (
+                <motion.div
+                  key={action.content}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="mt-6 text-xl bg-white/10 p-6 rounded-xl backdrop-blur-md"
+                >
+                  {action.type === "truth"
+                    ? `🗣️ ${action.content}`
+                    : `🍻 Take a sip! ${action.content}`}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <button
+              onClick={nextTurn}
+              className="mt-6 bg-white/20 hover:bg-white/30 px-6 py-2 rounded-lg font-semibold"
+              disabled={showScare}
+            >
+              Next Turn
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

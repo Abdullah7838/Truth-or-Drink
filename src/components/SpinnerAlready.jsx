@@ -12,7 +12,7 @@ const SpinnerAlready = () => {
     "Say a lie you told",
     "Sip your drink",
     "Embarrassing moment?",
-    "Drink from left hand",
+    "Take s aip 🥃",
   ]);
   const [inputValue, setInputValue] = useState(items);
   const [selectedItem, setSelectedItem] = useState(null);
