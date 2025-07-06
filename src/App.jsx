@@ -27,6 +27,8 @@ import Blog3 from './components/Blog3';
 import Blog4 from './components/Blog4';
 import ScrollToTop from './components/ScrollToTop';
 import Blog5 from './components/Blog5';
+import QuizMode from './components/QuizMode';
+import CarGame from './components/CarGame';
 
 function App() {
   const [myusername, setMainUsername] = useState('')
@@ -59,6 +61,8 @@ function App() {
         <Route path="/70-fun-truth-or-drink-questions-for-game-night" element={<Blog3 />} />
         <Route path="/80-funny-truth-or-drink-questions-hilarious-and-entertaining-questions-for-your-next-game-night" element={<Blog4 />} />
         <Route path="/100-fun-truth-or-drink-questions-for-game-night" element={<Blog5 />} />
+        <Route path='/quiz' element={<QuizMode/>}/>
+         <Route path='/car' element={<CarGame/>}/>
 
 
 

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Confetti from "react-confetti";
 import { Helmet } from "react-helmet-async";
-
+import truth from "./All-Truths/truths";
 const TruthAndDrinks = () => {
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
@@ -19,38 +19,6 @@ const TruthAndDrinks = () => {
 
   const truthsAndDares = {
     normal: {
-      truth: [
-        "What’s your biggest fear?",
-        "Have you ever lied to a teacher?",
-        "What’s your favorite childhood memory?",
-        "What’s the weirdest food combo you’ve tried?",
-        "What’s a secret talent you have?",
-        "What’s the most embarrassing thing you’ve done in public?",
-        "What’s a secret you’ve never told anyone?",
-        "Have you ever cheated on a test?",
-        "What’s the worst gift you’ve ever received?",
-        "What’s something you’re bad at but love doing?",
-        "Have you ever cried during a movie? Which one?",
-        "What’s the silliest thing you believed as a kid?",
-        "What’s your most annoying habit?",
-        "Have you ever gotten caught lying? What happened?",
-        "What’s the most trouble you’ve gotten into at school?",
-        "What’s your favorite thing about yourself?",
-        "What’s the most awkward thing you’ve said to someone?",
-        "What’s a talent you wish you had?",
-        "Have you ever had a crush on a cartoon character?",
-        "What’s the worst haircut you’ve ever had?",
-        "What’s something you’re scared to try but want to?",
-        "Have you ever broken something and blamed someone else?",
-        "What’s the funniest joke you know?",
-        "What’s your go-to excuse for being late?",
-        "What’s the weirdest smell you secretly like?",
-        "Have you ever forgotten someone’s name right after meeting them?",
-        "What’s the most childish thing you still do?",
-        "What’s a food you hate but everyone else loves?",
-        "Have you ever pretended to be sick to skip something?",
-        "What’s the most ridiculous thing you’ve argued about?",
-      ],
       dare: [
         "Take a sip of 🍹",
         "Take a sip of juice while holding your nose.",
@@ -85,38 +53,6 @@ const TruthAndDrinks = () => {
       ],
     },
     teens: {
-      truth: [
-        "Have you ever cheated on a test?",
-        "Who was your first crush?",
-        "What’s the most embarrassing thing you’ve done at school?",
-        "What’s a secret you’ve kept from your best friend?",
-        "Have you ever snuck out at night?",
-        "What’s the most embarrassing text you’ve sent?",
-        "Have you ever had a crush on a friend’s sibling?",
-        "What’s the worst date you’ve been on?",
-        "Have you ever lied to your parents about where you were?",
-        "What’s the most rebellious thing you’ve done?",
-        "Who’s the last person you stalked on social media?",
-        "Have you ever failed a class or assignment?",
-        "What’s the most awkward thing you’ve done around a crush?",
-        "What’s your most embarrassing nickname?",
-        "Have you ever been caught skipping school?",
-        "What’s the worst thing you’ve said about a friend?",
-        "What’s a trend you followed that you now regret?",
-        "Have you ever lied about your age?",
-        "What’s the most ridiculous thing you’ve done for attention?",
-        "What’s a song you secretly love but don’t admit?",
-        "Have you ever had a crush on a teacher?",
-        "What’s the most embarrassing thing in your search history?",
-        "What’s the worst fight you’ve had with a friend?",
-        "Have you ever pretended to like something to fit in?",
-        "What’s the most childish thing you’ve done recently?",
-        "What’s the weirdest thing you’ve done to impress someone?",
-        "Have you ever ghosted someone? Why?",
-        "What’s the most awkward thing you’ve said in a group chat?",
-        "What’s a rumor you’ve heard about yourself?",
-        "Have you ever cried over a breakup?",
-      ],
       dare: [
         "Take a sip of 🍹",
         "Take a sip of a drink and post a selfie with it.",
@@ -151,38 +87,6 @@ const TruthAndDrinks = () => {
       ],
     },
     "18+": {
-      truth: [
-        "Have you ever had a one-night stand?",
-        "What’s your biggest turn-on?",
-        "What’s something you’ve done you never told anyone?",
-        "What’s the most romantic thing you’ve done?",
-        "What’s your worst date experience?",
-        "What’s the wildest place you’ve ever hooked up?",
-        "Have you ever sent a risky text to the wrong person?",
-        "What’s a secret you’ve kept from your partner?",
-        "What’s the most embarrassing thing you’ve done on a date?",
-        "What’s the weirdest thing you find attractive?",
-        "What’s the most scandalous rumor about you?",
-        "Have you ever lied about your relationship status?",
-        "What’s the most adventurous thing you’ve done in private?",
-        "What’s a fantasy you’ve never shared with anyone?",
-        "Have you ever been caught in an awkward romantic moment?",
-        "What’s the worst pickup line you’ve ever used?",
-        "What’s the most romantic place you’ve been to?",
-        "Have you ever had a crush on a coworker?",
-        "What’s the most daring thing you’ve done to get someone’s attention?",
-        "What’s a dealbreaker in a relationship for you?",
-        "Have you ever dated someone your friends didn’t like?",
-        "What’s the most embarrassing thing you’ve done while drunk?",
-        "What’s a guilty pleasure you’re shy to admit?",
-        "Have you ever flirted to get out of trouble?",
-        "What’s the strangest place you’ve ever met someone special?",
-        "Have you ever lied to impress a date? What was it?",
-        "What’s the most awkward thing you’ve said during a romantic moment?",
-        "What’s a song that always gets you in the mood?",
-        "Have you ever had an embarrassing moment during a kiss?",
-        "What’s the most spontaneous thing you’ve done for love?",
-      ],
       dare: [
         "Take a sip of 🥂",
         "Take a sip of a drink and send a flirty text to someone.",
@@ -255,8 +159,25 @@ const TruthAndDrinks = () => {
   };
 
   const handleChoice = (type) => {
-    const options = truthsAndDares[category][type];
-    const random = options[Math.floor(Math.random() * options.length)];
+    let options;
+
+    if (type === "truth") {
+      // Get truth from external file
+      options = truth[category];
+    } else {
+      // Get dare from local array in truthsAndDares object
+      options = truthsAndDares[category].dare;
+    }
+
+    // Fisher-Yates Shuffle
+    const shuffled = [...options];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    const random = shuffled[0];
+
     setExploding(true);
     setTimeout(() => {
       setChoice(type);
@@ -370,7 +291,7 @@ const TruthAndDrinks = () => {
               className="w-full p-3 rounded bg-black text-red-400 border border-red-500"
             >
               <option value="normal">Normal</option>
-              <option value="teens">Teens</option>
+              <option value="party">Party</option>
               <option value="18+">18+</option>
             </select>
             <button

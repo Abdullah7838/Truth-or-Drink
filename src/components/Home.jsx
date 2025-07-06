@@ -14,7 +14,7 @@ import { FaPlay } from "react-icons/fa";
 import HomeBlogs from "./HomeBlogs";
 import { Helmet } from "react-helmet-async";
 import ChatBot from "./ChatBot";
-
+import ChatLauncher from "./ChatLauncher";
 function Home({ setMainUsername }) {
   const [showChat, setShowChat] = useState(false);
 
@@ -58,27 +58,56 @@ function Home({ setMainUsername }) {
           </p>
 
           {/* Game Options */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-semibold w-full max-w-lg mx-auto mt-12 px-4">
-            {/* Play Online */}
-            <Link to="/drink-room">
-              <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-white text-black border border-gray-300 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-blue-100 transition-all duration-200 active:scale-95">
-                <div className="bg-blue-600 p-2 rounded-full shadow-sm">
-                  <FaPlay className="text-white w-4 h-4" />
-                </div>
-                Play Online
-              </button>
-            </Link>
+          {/* Game Options */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-semibold w-full max-w-2xl mx-auto mt-12 px-4">
+  {/* Play Online */}
+  <Link to="/drink-room">
+    <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-white text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-teal-50 transition-all duration-200 active:scale-95 active:bg-teal-100">
+      <div className="bg-teal-500 p-2 rounded-full shadow-sm">
+        <FaPlay className="text-white w-4 h-4" />
+      </div>
+      Play Online
+    </button>
+  </Link>
 
-            {/* Play Offline */}
-            <Link to="/offline-truth-or-drink">
-              <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-white text-black border border-gray-300 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-blue-100 transition-all duration-200 active:scale-95">
-                <div className="bg-blue-600 p-2 rounded-full shadow-sm">
-                  <FaPlay className="text-white w-4 h-4" />
-                </div>
-                Play Offline
-              </button>
-            </Link>
+  {/* Play Offline */}
+  <Link to="/offline-truth-or-drink">
+    <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-white text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-teal-50 transition-all duration-200 active:scale-95 active:bg-teal-100">
+      <div className="bg-teal-500 p-2 rounded-full shadow-sm">
+        <FaPlay className="text-white w-4 h-4" />
+      </div>
+      Play Offline
+    </button>
+  </Link>
+
+  {/* Play Ultimate – centered full on mobile, half on PC */}
+  <div className="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+    <Link to="/quiz">
+      <div className="relative w-full">
+        {/* NEW Badge */}
+        <span className="absolute -top-2 -left-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md z-10">
+          NEW
+        </span>
+
+        {/* Button */}
+        <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-50 text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-indigo-50 transition-all duration-200 active:scale-95 active:bg-indigo-100">
+          <div className="bg-indigo-500 p-2 rounded-full shadow-sm">
+            <FaPlay className="text-white w-4 h-4" />
           </div>
+          Play Quiz Mode
+        </button>
+      </div>
+    </Link>
+    <Link to="/ultimate">
+      <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-900 text-white border border-gray-700 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-red-700 transition-all duration-200 active:scale-95 active:bg-red-800">
+        <div className="bg-red-600 p-2 rounded-full shadow-sm">
+          <FaPlay className="text-white w-4 h-4" />
+        </div>
+        Play Ultimate
+      </button>
+    </Link>
+  </div>
+</div>
         </div>
         {/* <!-- Spinner Wheel Section --> */}
         <div className="w-full max-w-4xl mb-12">
@@ -95,21 +124,9 @@ function Home({ setMainUsername }) {
         </div>
       </div>
 
-      
       {/* 💬 Floating Chat Button */}
-      <button
-        onClick={() => setShowChat((prev) => !prev)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white p-3 sm:p-4 rounded-full shadow-lg transition"
-        aria-label="Toggle ChatBot"
-      >
-        {showChat ? (
-          <FaTimes className="w-5 h-5" />
-        ) : (
-          <FaCommentDots className="w-5 h-5" />
-        )}
-      </button>
+      <ChatLauncher showChat={showChat} setShowChat={setShowChat} />
 
-      {/* 🧠 ChatBot Panel */}
       {showChat && (
         <div className="fixed bottom-20 right-4 sm:right-6 w-[95%] sm:w-[90%] max-w-sm h-[80vh] max-h-screen bg-white rounded-xl shadow-2xl overflow-hidden z-50 flex flex-col">
           <ChatBot />

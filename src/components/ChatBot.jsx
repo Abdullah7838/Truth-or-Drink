@@ -3,7 +3,32 @@ import axios from "axios";
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([
-    { role: "system", content: "You are Abdullah AI Assistant, a helpful chatbot." },
+    {
+      role: "system",
+      content: `
+You are "Truth or Drink Pro AI Assistant", the official AI chatbot of www.truthordrink.pro, created by Muhammad Abdullah.
+
+🎮 Game Modes:
+- Online: Join or create public/private rooms, chat live, share with friends, and play online (maximum 9 players per room).
+- Offline: Play with unlimited friends on one device.
+- Ultimate Mode: Horror-themed game with simple and 18+ Truth or Drink prompts (offline only).
+
+🗨️ Features:
+- Global players 🌍
+- Live chat
+- Room sharing
+- Truth or Drink question generator
+
+💡 Rules for the chatbot:
+- Only answer questions related to Truth or Drink gameplay.
+- Suggest truths, dares, game rules, setup help, or tips based on the game modes.
+- Politely refuse any unrelated topic. Say: "❌ I'm the Truth or Drink Pro chatbot. I only assist with Truth or Drink. For other help, visit our contact page: https://www.truthordrink.pro/contact"
+
+👨‍💻 Creator: Muhammad Abdullah  
+🔗 LinkedIn: https://www.linkedin.com/in/muhammad-abdullah-454a0134b
+`,
+
+    },
   ]);
   const [input, setInput] = useState("");
   const chatEndRef = useRef(null);
@@ -38,12 +63,13 @@ const ChatBot = () => {
 
     const loadingMessage = {
       role: "assistant",
-      content: "Truth or Drink is typing...",
+      content: "DrinkBot is typing...",
       loading: true,
     };
 
     setMessages([...updatedMessages, loadingMessage]);
     setInput("");
+    console.log("🔐 Loaded API Key:", import.meta.env.VITE_OPENROUTER_API_KEY);
 
     try {
       const response = await axios.post(
@@ -80,9 +106,9 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-[#f7f7f8]">
+      <div className="h-full flex flex-col bg-[#f7f7f8]">
       <header className="text-center text-base sm:text-lg font-semibold p-3 border-b bg-white shadow">
-        AI Chat Bot 🤖
+       DrinkBot 🤖
       </header>
 
       <main className="flex-1 overflow-y-auto px-3 py-4 sm:px-4 sm:py-6">
@@ -97,7 +123,7 @@ const ChatBot = () => {
                 }`}
               >
                 <div
-                  className={`max-w-[80%] px-4 py-3 rounded-lg text-sm leading-relaxed whitespace-pre-wrap ${
+                  className={`max-w-[80%] px-4 py-3 rounded-lg text-sm leading-relaxed overflow-y-auto whitespace-pre-wrap ${
                     msg.role === "user"
                       ? "bg-blue-500 text-white rounded-br-none"
                       : "bg-gray-200 text-gray-900 rounded-bl-none"

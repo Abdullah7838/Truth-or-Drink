@@ -3,41 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import Confetti from "react-confetti";
 import { FaBeer, FaQuestion } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
-
-const truthQuestions = [
-  "What's the most embarrassing thing you've ever done?",
-  "Have you ever had a crush on someone here?",
-  "What's your biggest secret?",
-  "What's your guilty pleasure?",
-  "Have you ever lied to get out of trouble?",
-  "What is something you've done that you regret deeply?",
-  "Have you ever lied to your best friend? What about?",
-  "What secret are you keeping from your parents?",
-  "Who is someone you pretend to like but secretly don't?",
-  "What was your most awkward date experience?",
-  "Have you ever blamed someone else for your mistake?",
-  "What is the most selfish thing you've ever done?",
-  "What’s the one thing you’re most ashamed of?",
-  "Who do you stalk on social media the most?",
-  "What's the weirdest thing you’ve done alone?",
-  "Have you ever cheated on a test or assignment?",
-  "What's the worst lie you've ever told?",
-  "What’s your biggest insecurity?",
-  "Have you ever broken someone's trust?",
-  "Have you ever had a crush on a teacher or mentor?",
-  "What’s a secret you've never told anyone?",
-  "What's your guilty pleasure TV show?",
-  "Have you ever pretended to be sick to skip something important?",
-  "Have you ever eavesdropped on someone?",
-  "What’s something you’re glad your parents don’t know about you?",
-  "Have you ever made fun of someone behind their back?",
-  "What’s the biggest mistake you've made in a relationship?",
-  "Have you ever sent a message to the wrong person?",
-  "Have you ever told a secret you promised to keep?",
-  "What rumor did you help spread — and regret?",
-];
+import truth from "./All-Truths/truths";
 
 const drinkAnimations = ["🍺", "🥃", "🍷", "🍹", "🍸", "🥂"];
+
+const modes = [
+  { id: "normal", title: "Normal", desc: "Family-friendly fun" },
+  { id: "party", title: "Party", desc: "Spicy and daring" },
+  { id: "18+", title: "18+", desc: "Adults only 🔞" },
+];
 
 const OfflineDrink = () => {
   const [players, setPlayers] = useState([]);
@@ -51,6 +25,11 @@ const OfflineDrink = () => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  const [mode, setMode] = useState(null);
+  const [shuffledTruths, setShuffledTruths] = useState([]);
+  const [truthIndex, setTruthIndex] = useState(0);
+  const [completedTurns, setCompletedTurns] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     const handleResize = () =>
@@ -58,6 +37,15 @@ const OfflineDrink = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const shuffleArray = (arr) => {
+    const copy = [...arr];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  };
 
   const addPlayer = () => {
     if (input.trim()) {
@@ -67,12 +55,25 @@ const OfflineDrink = () => {
   };
 
   const startGame = () => {
-    if (players.length > 0) setStarted(true);
+    if (players.length >= 1 && mode) {
+      setShuffledTruths(shuffleArray(truth[mode]));
+      setStarted(true);
+      setTurn(0);
+      setCompletedTurns(0);
+      setGameOver(false);
+    }
   };
 
   const nextTurn = () => {
     setAction(null);
-    setTurn((prev) => (prev + 1) % players.length);
+    const next = (turn + 1) % players.length;
+    setTurn(next);
+    setCompletedTurns((prev) => prev + 1);
+    setGameOver(false);
+
+    if (completedTurns + 1 >= players.length) {
+      setGameOver(true);
+    }
   };
 
   const scareThenShow = (callback) => {
@@ -81,14 +82,14 @@ const OfflineDrink = () => {
     setTimeout(() => {
       setShowScare(false);
       callback();
-    }, 2500); // Animation lasts 2.5s
+    }, 2500);
   };
 
   const handleTruth = () => {
     scareThenShow(() => {
-      const random =
-        truthQuestions[Math.floor(Math.random() * truthQuestions.length)];
-      setAction({ type: "truth", content: random });
+      const q = shuffledTruths[truthIndex % shuffledTruths.length];
+      setAction({ type: "truth", content: q });
+      setTruthIndex((prev) => prev + 1);
     });
   };
 
@@ -101,149 +102,158 @@ const OfflineDrink = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen w-full bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 text-white flex items-center justify-center p-4 sm:p-6">
       <Helmet>
-        <title>Truth or Drink– Play Offline With Friends</title>
-        <meta
-          name="description"
-          content="Play Truth or Drink Offline with friends. Choose a mode of truth or drink, spin the wheel, and enjoy fun challenges!"
-        />
-        <meta
-          name="keywords"
-          content="truth or drink, online and offline party game, online  and offline game, drink game , offline truth or drink "
-        />
-        <meta
-          property="og:title"
-          content="Truth or Drink– Ofline Play With Friends"
-        />
-        <meta
-          property="og:description"
-          content="Play Truth or Drink offline with friends. Choose a mode of truth or drink, spin the wheel, and enjoy fun challenges!"
-        />
-        <meta property="og:type" content="website" />
-        <meta name="robots" content="index, follow" />
+        <title>Truth or Drink – Offline</title>
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-purple-800 via-pink-700 to-red-600 text-white flex flex-col items-center justify-center p-6 overflow-hidden relative">
-        {/* Horror Confetti Blast */}
-        <AnimatePresence>
-          {showScare && (
-            <>
-              <Confetti
-                key={confettiKey}
-                numberOfPieces={400}
-                recycle={false}
-                width={windowSize.width}
-                height={windowSize.height}
-                gravity={0.4}
-                colors={["#ff0000", "#990000", "#000000"]}
-                initialVelocityY={20}
-                run={true}
-              />
-              <motion.div
-                className="absolute inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center text-5xl font-extrabold text-red-600"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{
-                  opacity: [0.3, 1, 0.3],
-                  scale: [1, 1.3, 1],
-                  rotate: [0, 5, -5, 0],
-                }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 2.2 }}
-              >
-                💀 Get Ready 💥
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
+      <AnimatePresence>
+        {showScare && (
+          <>
+            <Confetti
+              key={confettiKey}
+              numberOfPieces={400}
+              recycle={false}
+              width={windowSize.width}
+              height={windowSize.height}
+              gravity={0.4}
+              colors={["#ff0000", "#990000", "#000000"]}
+              run={true}
+            />
+            <motion.div
+              className="absolute inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center text-5xl font-extrabold text-red-600"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: [0.3, 1, 0.3],
+                scale: [1, 1.3, 1],
+                rotate: [0, 5, -5, 0],
+              }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 2.2 }}
+            >
+              💀 Get Ready
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
+      <div className="w-full max-w-lg sm:max-w-2xl bg-gray-800/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl space-y-6">
         {!started ? (
-          <div className="w-full max-w-md space-y-4 z-10">
-            <h1 className="text-3xl font-bold text-center">
-              🎉 Truth or Drink
+          <>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-center text-pink-300 tracking-tight">
+              Truth or Drink
             </h1>
+            <div className="flex justify-center items-center text-pink-300">
+              <p>Choose Any Mode to Start</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              {modes.map((m) => (
+                <button
+                  key={m.id}
+                  onClick={() => setMode(m.id)}
+                  className={`flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
+                    mode === m.id
+                      ? "bg-pink-500 text-white ring-2 ring-pink-300"
+                      : "bg-gray-700/50 text-gray-200 hover:bg-gray-600/50"
+                  }`}
+                >
+                  <div className="text-lg font-semibold">{m.title}</div>
+                  <div className="text-sm text-gray-300 mt-1">{m.desc}</div>
+                </button>
+              ))}
+            </div>
+
             <div className="flex gap-2">
               <input
                 type="text"
                 placeholder="Enter player name"
-                className="flex-1 p-3 rounded-lg text-white bg-transparent border border-black focus:outline-none focus:ring-2 focus:ring-black placeholder-white/60"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && addPlayer()}
+                className="w-full p-3 rounded-lg bg-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
               />
               <button
                 onClick={addPlayer}
-                className="bg-white text-black font-bold px-4 py-2 rounded-lg"
+                className="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded-lg font-semibold text-white transition"
               >
                 Add
               </button>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {players.map((p, i) => (
-                <span
-                  key={i}
-                  className="bg-white/20 px-3 py-1 rounded-full text-sm"
-                >
-                  {p}
-                </span>
-              ))}
-            </div>
+
+            {players.length > 0 && (
+              <div className="flex flex-wrap gap-2 justify-center">
+                {players.map((p, i) => (
+                  <span
+                    key={i}
+                    className="bg-pink-500/30 px-3 py-1 rounded-full text-sm font-medium text-white"
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
+            )}
+
             <button
-              className="w-full mt-4 bg-green-500 hover:bg-green-600 py-3 rounded-lg font-bold"
               onClick={startGame}
+              disabled={players.length < 1 || !mode}
+              className={`w-full py-3 rounded-lg font-semibold text-lg transition-all duration-300 ${
+                players.length >= 1 && mode
+                  ? "bg-pink-500 hover:bg-pink-600 text-white"
+                  : "bg-gray-600/50 text-gray-400 cursor-not-allowed"
+              }`}
             >
               Start Game
             </button>
-          </div>
+          </>
         ) : (
-          <div className="w-full max-w-xl text-center space-y-8 z-10">
-            <h2 className="text-2xl font-semibold">
+          <>
+            <h2 className="text-2xl sm:text-3xl font-bold text-center text-pink-300">
               🎯 {players[turn]}'s Turn
             </h2>
-            <div className="flex justify-center gap-6">
+
+            {gameOver && <></>}
+
+            <div className="flex justify-center gap-3 sm:gap-4">
               <button
                 onClick={handleTruth}
-                className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl text-lg font-bold flex items-center gap-2"
+                className="bg-indigo-600 hover:bg-indigo-700 px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-semibold flex items-center gap-2 text-white transition disabled:opacity-50"
                 disabled={showScare}
               >
                 <FaQuestion /> Truth
               </button>
               <button
                 onClick={handleDrink}
-                className="bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-xl text-lg font-bold flex items-center gap-2"
+                className="bg-yellow-500 hover:bg-yellow-600 px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-semibold flex items-center gap-2 text-gray-900 transition disabled:opacity-50"
                 disabled={showScare}
               >
                 <FaBeer /> Drink
               </button>
             </div>
 
-            <AnimatePresence>
-              {!showScare && action && (
-                <motion.div
-                  key={action.content}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="mt-6 text-xl bg-white/10 p-6 rounded-xl backdrop-blur-md"
-                >
-                  {action.type === "truth"
-                    ? `🗣️ ${action.content}`
-                    : `🍻 Take a sip! ${action.content}`}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {action && !showScare && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="bg-gray-700/50 p-4 sm:p-5 rounded-xl text-base sm:text-lg font-medium text-center text-gray-100"
+              >
+                {action.type === "truth"
+                  ? `🗣️ ${action.content}`
+                  : `🍻 Take a sip! ${action.content}`}
+              </motion.div>
+            )}
 
             <button
               onClick={nextTurn}
-              className="mt-6 bg-white/20 hover:bg-white/30 px-6 py-2 rounded-lg font-semibold"
+              className="w-full bg-gray-600/50 hover:bg-gray-500/50 px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-white font-semibold transition disabled:opacity-50"
               disabled={showScare}
             >
               Next Turn
             </button>
-          </div>
+          </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

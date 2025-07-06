@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.truthordrink.pro/sitemap.xml
+Sitemap: https://truthordrink.pro/sitemap.xml
