@@ -27,6 +27,8 @@ const PopupNotice = () => {
           You should have a stable internet connection to play online. Otherwise your game will be interrupted and you will lose your progress.
         </p>
         <button
+          aria-label="Close Popup"
+          type="button"
           onClick={handleClose}
           className="mt-5 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
         >

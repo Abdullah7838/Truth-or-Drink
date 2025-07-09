@@ -61,8 +61,13 @@ function DrinkRooms({ setMainUsername }) {
             🔮 Join or Create a Room
           </h1>
 
-          <Link to="/create-drink-room">
-            <button className="w-full flex items-center justify-center gap-3 bg-white text-indigo-700 font-bold py-3 px-5 rounded-xl shadow hover:bg-indigo-100 transition-all duration-300 mb-8">
+          <Link 
+            aria-label="Create Your Own Room"
+          to="/create-drink-room">
+            <button 
+              aria-label="Create Your Own Room"
+              type="button"
+              className="w-full flex items-center justify-center gap-3 bg-white text-indigo-700 font-bold py-3 px-5 rounded-xl shadow hover:bg-indigo-100 transition-all duration-300 mb-8">
               <FaPlusCircle />
               Create Your Own Room
             </button>
@@ -83,7 +88,9 @@ function DrinkRooms({ setMainUsername }) {
           ) : (
             <div className="space-y-4">
               {rooms.map((room) => (
-                <Link to={`/drooms/${room._id}/dgame`} key={room._id}>
+                <Link
+                  aria-label={`Join room ${room.roomName}`}
+                 to={`/drooms/${room._id}/dgame`} key={room._id}>
                   <div className="w-full bg-white/20 hover:bg-white/30 cursor-pointer py-3 px-5 rounded-xl transition-all duration-300 border border-white/20 shadow backdrop-blur mt-1">
                     <p className="text-lg font-semibold flex justify-between items-center">
                       {room.roomName}
@@ -102,6 +109,8 @@ function DrinkRooms({ setMainUsername }) {
           )}
         </div>
         <button
+          aria-label="Go Back"
+          type="button"
           onClick={() => navigate(-1)}
           className="absolute top-4 left-4 text-white bg-black/40 hover:bg-black/60 px-3 py-1 rounded-lg text-sm font-semibold transition"
         >

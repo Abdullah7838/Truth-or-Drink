@@ -698,7 +698,7 @@ const loadQuestion = () => {
 
   const pickCard = (type) => {
     if (type === "truth") {
-      const categories = ["normal", "party", "18+"];
+      const categories = ["normal", "party", "spicy" , "funny" , "18+"];
       const randomCategory =
         categories[Math.floor(Math.random() * categories.length)];
       const truthsArray = truth[randomCategory];
@@ -836,6 +836,7 @@ const loadQuestion = () => {
                 3. Answer correctly or face a Truth or Drink challenge!
               </p>
               <motion.button
+                aria-label="Start the game"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowInstructions(false)}
@@ -872,6 +873,7 @@ const loadQuestion = () => {
                 className="px-4 py-3 rounded-lg text-black w-full bg-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
               />
               <motion.button
+                aria-label="Add player"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={addPlayer}
@@ -895,6 +897,7 @@ const loadQuestion = () => {
             </ul>
             {players.length > 1 ? (
               <motion.button
+                aria-label="Choose quiz category"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setStage("type")}
@@ -923,6 +926,7 @@ const loadQuestion = () => {
             <div className="grid grid-cols-2 gap-4">
               {Object.keys(questions).map((t) => (
                 <motion.button
+                  aria-label={`Select ${t} category`}
                   key={t}
                   whileHover={{
                     scale: 1.05,
@@ -942,6 +946,7 @@ const loadQuestion = () => {
             </div>
             {type && (
               <motion.button
+                aria-label="Start the quiz"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={startQuiz}
@@ -995,6 +1000,7 @@ const loadQuestion = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {q.options.map((opt, i) => (
                   <motion.button
+                    aria-label={`Select option ${opt}`}
                     key={i}
                     whileHover={{
                       scale: 1.05,
@@ -1028,6 +1034,7 @@ const loadQuestion = () => {
                 </h3>
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                   <motion.button
+                    aria-label="Pick a truth card"
                     whileHover={{
                       scale: 1.05,
                       rotateY: 10,
@@ -1043,6 +1050,7 @@ const loadQuestion = () => {
                     Truth
                   </motion.button>
                   <motion.button
+                    aria-label="Pick a drink card"
                     whileHover={{
                       scale: 1.05,
                       rotateY: -10,
@@ -1083,6 +1091,7 @@ const loadQuestion = () => {
                   {cardText}
                 </p>
                 <motion.button
+                  aria-label="Next turn"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={nextTurn}

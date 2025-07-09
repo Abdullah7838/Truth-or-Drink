@@ -10,7 +10,10 @@ const drinkAnimations = ["🍺", "🥃", "🍷", "🍹", "🍸", "🥂"];
 const modes = [
   { id: "normal", title: "Normal", desc: "Family-friendly fun" },
   { id: "party", title: "Party", desc: "Spicy and daring" },
-  { id: "18+", title: "18+", desc: "Adults only 🔞" },
+  { id: "funny", title: "Funny", desc: "Laugh-out-loud awkwardness" },
+  { id: "spicy", title: "Spicy", desc: "Bold, flirty, and fiery" },
+  { id: "dare", title: "Dare", desc: "Dare to do it or drink" },
+  { id: "18+", title: "18+", desc: "Adults only" },
 ];
 
 const OfflineDrink = () => {
@@ -19,6 +22,7 @@ const OfflineDrink = () => {
   const [started, setStarted] = useState(false);
   const [turn, setTurn] = useState(0);
   const [action, setAction] = useState(null);
+  const [hide, setHowtoPlayHide] = useState("");
   const [showScare, setShowScare] = useState(false);
   const [confettiKey, setConfettiKey] = useState(0);
   const [windowSize, setWindowSize] = useState({
@@ -31,12 +35,21 @@ const OfflineDrink = () => {
   const [completedTurns, setCompletedTurns] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
+
   useEffect(() => {
+    setHowtoPlayHide("")
     const handleResize = () =>
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
 
   const shuffleArray = (arr) => {
     const copy = [...arr];
@@ -61,6 +74,8 @@ const OfflineDrink = () => {
       setTurn(0);
       setCompletedTurns(0);
       setGameOver(false);
+      setHowtoPlayHide("hidden");
+      scrollToTop();
     }
   };
 
@@ -121,7 +136,7 @@ const OfflineDrink = () => {
               run={true}
             />
             <motion.div
-              className="absolute inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center text-5xl font-extrabold text-red-600"
+              className="absolute inset-0 z-50  bg-opacity-80 flex items-center justify-center text-5xl font-extrabold text-red-600"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{
                 opacity: [0.3, 1, 0.3],
@@ -131,7 +146,7 @@ const OfflineDrink = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 2.2 }}
             >
-              💀 Get Ready
+              Get Ready
             </motion.div>
           </>
         )}
@@ -149,6 +164,8 @@ const OfflineDrink = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               {modes.map((m) => (
                 <button
+                  aria-label={`Select ${m.title} Mode`}
+                  type="button"
                   key={m.id}
                   onClick={() => setMode(m.id)}
                   className={`flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
@@ -173,6 +190,8 @@ const OfflineDrink = () => {
                 className="w-full p-3 rounded-lg bg-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
               />
               <button
+                aria-label="Add Player"
+                type="button"
                 onClick={addPlayer}
                 className="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded-lg font-semibold text-white transition"
               >
@@ -194,6 +213,8 @@ const OfflineDrink = () => {
             )}
 
             <button
+              aria-label="Start Game"
+              type="button"
               onClick={startGame}
               disabled={players.length < 1 || !mode}
               className={`w-full py-3 rounded-lg font-semibold text-lg transition-all duration-300 ${
@@ -215,6 +236,8 @@ const OfflineDrink = () => {
 
             <div className="flex justify-center gap-3 sm:gap-4">
               <button
+                aria-label="Truth Button"
+                type="button"
                 onClick={handleTruth}
                 className="bg-indigo-600 hover:bg-indigo-700 px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-semibold flex items-center gap-2 text-white transition disabled:opacity-50"
                 disabled={showScare}
@@ -222,6 +245,8 @@ const OfflineDrink = () => {
                 <FaQuestion /> Truth
               </button>
               <button
+                aria-label="Drink Button"
+                type="button"
                 onClick={handleDrink}
                 className="bg-yellow-500 hover:bg-yellow-600 px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-semibold flex items-center gap-2 text-gray-900 transition disabled:opacity-50"
                 disabled={showScare}
@@ -244,6 +269,8 @@ const OfflineDrink = () => {
             )}
 
             <button
+              aria-label="Next Turn"
+              type="button"
               onClick={nextTurn}
               className="w-full bg-gray-600/50 hover:bg-gray-500/50 px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-white font-semibold transition disabled:opacity-50"
               disabled={showScare}
@@ -252,6 +279,55 @@ const OfflineDrink = () => {
             </button>
           </>
         )}
+
+        <div className={`min-h-screen ${hide} bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 text-white px-6 md:px-16 pt-24`}>
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-extrabold text-center text-yellow-300 mb-10 drop-shadow"
+          >
+            How to Play
+          </motion.h1>
+
+          <div className="grid grid-col-1 md:grid-cols-1 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                title: "1. Choose a Mode",
+                description:
+                  "Select a game mode: Normal, Party, Spicy, Funny, 18+, or Dare. Pick the vibe that fits your night!",
+                color: "from-blue-500 to-purple-600",
+              },
+              {
+                title: "2. Add Players",
+                description:
+                  "Enter at least one player name and hit the 'Add' button. Everyone ready? Hit 'Start Game'!",
+                color: "from-green-400 to-teal-500",
+              },
+              {
+                title: "3. Click Truth or Drink",
+                description:
+                "Take turns clicking ‘Truth’ or ‘Drink’. Then click ‘Next Turn’ to pass it to the next player.",
+                color: "from-pink-500 to-red-600",
+              },
+            ].map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.5 }}
+                className={`bg-gradient-to-br ${step.color} text-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transform hover:scale-105 transition-all duration-300`}
+              >
+                <h2 className="text-xl font-extrabold mb-3">{step.title}</h2>
+                <p className="text-sm leading-relaxed opacity-90">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="pt-16" />
+        </div>
       </div>
     </div>
   );

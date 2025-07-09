@@ -38,7 +38,7 @@ const blogs = [
 function Blog4() {
   return (
     <div className="bg-white text-black px-4 sm:px-8 md:px-12 lg:px-16 py-8 max-w-5xl mx-auto">
-      <img src={blog3} alt="truthordrink.pro" className="w-full h-auto mb-8 rounded-lg" />
+      <img src={blog3} alt="Thumbnail for 80 Funny Truth or Drink" className="w-full h-auto mb-8 rounded-lg" />
       <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
         80 Funny Truth or Drink Questions: Hilarious and Entertaining Questions for Your Next Game Night
       </h1>
@@ -74,8 +74,10 @@ function Blog4() {
         <h3 className="text-xl font-medium mb-2">Keep the Fun Going</h3>
         <p className="mb-2">Continue playing until everyone is laughing too hard to continue or until you run out of questions!</p>
       </section>
-<Link to="/" className="flex justify-center">
-        <button className="flex items-center max-w-xs justify-center gap-3 w-full cursor-pointer bg-blue-500 text-white border border-gray-300 rounded-full py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-blue-400 mb-4 transition-all duration-200 active:scale-95">
+<Link
+aria-label='Play Online'
+ to="/" className="flex justify-center">
+        <button aria-label="Play Online" className="flex items-center max-w-xs justify-center gap-3 w-full cursor-pointer bg-blue-500 text-white border border-gray-300 rounded-full py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-blue-400 mb-4 transition-all duration-200 active:scale-95">
           <div className="bg-white p-2 rounded-full shadow-sm">
             <FaPlay className="text-blue-600 w-4 h-4" />
           </div>
@@ -230,7 +232,9 @@ function Blog4() {
                   </h2>
                   <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                     {blogs.map((blog) => (
-                      <Link to={`/${blog.link}`} key={blog.id}>
+                      <Link 
+                      aria-label={`Read ${blog.title}`}
+                      to={`/${blog.link}`} key={blog.id}>
                         <div
                           key={blog.id}
                           className="bg-white shadow-lg rounded-xl cursor-pointer overflow-hidden transition-transform hover:scale-105"

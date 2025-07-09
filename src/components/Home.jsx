@@ -15,6 +15,8 @@ import HomeBlogs from "./HomeBlogs";
 import { Helmet } from "react-helmet-async";
 import ChatBot from "./ChatBot";
 import ChatLauncher from "./ChatLauncher";
+import SpinnerAlready from './SpinnerAlready';
+
 function Home({ setMainUsername }) {
   const [showChat, setShowChat] = useState(false);
 
@@ -60,56 +62,94 @@ function Home({ setMainUsername }) {
           {/* Game Options */}
           {/* Game Options */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-semibold w-full max-w-2xl mx-auto mt-12 px-4">
-  {/* Play Online */}
-  <Link to="/drink-room">
-    <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-white text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-teal-50 transition-all duration-200 active:scale-95 active:bg-teal-100">
-      <div className="bg-teal-500 p-2 rounded-full shadow-sm">
-        <FaPlay className="text-white w-4 h-4" />
-      </div>
-      Play Online
-    </button>
-  </Link>
+            {/* Play Online */}
+            <Link 
+            aria-label="Play Online"
+            to="/drink-room">
+              <button aria-label="Play online" className="flex items-center justify-center gap-3 w-full cursor-pointer bg-white text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-teal-50 transition-all duration-200 active:scale-95 active:bg-teal-100">
+                <div className="bg-teal-500 p-2 rounded-full shadow-sm">
+                  <FaPlay className="text-white w-4 h-4" />
+                </div>
+                Play Online
+              </button>
+            </Link>
 
-  {/* Play Offline */}
-  <Link to="/offline-truth-or-drink">
-    <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-white text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-teal-50 transition-all duration-200 active:scale-95 active:bg-teal-100">
-      <div className="bg-teal-500 p-2 rounded-full shadow-sm">
-        <FaPlay className="text-white w-4 h-4" />
-      </div>
-      Play Offline
-    </button>
-  </Link>
+            {/* Play Offline */}
+            <Link 
+            aria-label="Play Offline"
+            to="/offline-truth-or-drink">
+              <button aria-label="Play Offline" className="flex items-center justify-center gap-3 w-full cursor-pointer bg-white text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-teal-50 transition-all duration-200 active:scale-95 active:bg-teal-100">
+                <div className="bg-teal-500 p-2 rounded-full shadow-sm">
+                  <FaPlay className="text-white w-4 h-4" />
+                </div>
+                Play Offline
+              </button>
+            </Link>
 
-  {/* Play Ultimate – centered full on mobile, half on PC */}
-  <div className="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-    <Link to="/quiz">
-      <div className="relative w-full">
-        {/* NEW Badge */}
-        <span className="absolute -top-2 -left-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md z-10">
-          NEW
-        </span>
+            {/* Play Ultimate – centered full on mobile, half on PC */}
+            <div className="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
 
-        {/* Button */}
-        <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-50 text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-indigo-50 transition-all duration-200 active:scale-95 active:bg-indigo-100">
-          <div className="bg-indigo-500 p-2 rounded-full shadow-sm">
-            <FaPlay className="text-white w-4 h-4" />
+              <Link 
+              aria-label="Quiz Mode"
+              to="/quiz">
+                <div className="relative w-full">
+                  {/* NEW Badge */}
+                  <span className="absolute -top-2 -left-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md z-10">
+                    NEW
+                  </span>
+
+                  {/* Button */}
+                  <button aria-label="Quiz Mode" className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-50 text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-indigo-50 transition-all duration-200 active:scale-95 active:bg-indigo-100">
+                    <div className="bg-indigo-500 p-2 rounded-full shadow-sm">
+                      <FaPlay className="text-white w-4 h-4" />
+                    </div>
+                    Quiz Mode
+                  </button>
+                </div>
+              </Link>
+
+
+              <Link 
+              aria-label="Play Truth Running"
+              to="/truth-running">
+                <div className="relative w-full">
+                  {/* NEW Badge */}
+                  <span className="absolute -top-2 -left-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md z-10">
+                    BETA
+                  </span>
+
+                  {/* Button */}
+                  <button aria-label="Play Running" className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-50 text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-indigo-50 transition-all duration-200 active:scale-95 active:bg-indigo-100">
+                    <div className="bg-indigo-500 p-2 rounded-full shadow-sm">
+                      <FaPlay className="text-white w-4 h-4" />
+                    </div>
+                    Truth Running
+                  </button>
+                </div>
+              </Link>
+
+            </div>
+
+            <div className="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+              <Link 
+              aria-label="Play Truth or Drink Ultimate"
+              to="/ultimate">
+                <button aria-label="Play Ultimate" className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-900 text-white border border-gray-700 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-red-700 transition-all duration-200 active:scale-95 active:bg-red-800">
+                  <div className="bg-red-600 p-2 rounded-full shadow-sm">
+                    <FaPlay className="text-white w-4 h-4" />
+                  </div>
+                  Play Ultimate
+                </button>
+              </Link>
+            </div>
           </div>
-          Play Quiz Mode
-        </button>
-      </div>
-    </Link>
-    <Link to="/ultimate">
-      <button className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-900 text-white border border-gray-700 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-red-700 transition-all duration-200 active:scale-95 active:bg-red-800">
-        <div className="bg-red-600 p-2 rounded-full shadow-sm">
-          <FaPlay className="text-white w-4 h-4" />
-        </div>
-        Play Ultimate
-      </button>
-    </Link>
-  </div>
-</div>
+
+
         </div>
         {/* <!-- Spinner Wheel Section --> */}
+         <div className="w-full max-w-4xl mb-12">
+          <SpinnerAlready />
+        </div>
         <div className="w-full max-w-4xl mb-12">
           <SpinnerWheel />
         </div>

@@ -277,6 +277,8 @@ const SpinnerWheel = () => {
               disabled={isSpinning}
             />
             <button
+              aria-label="Add challenge"
+              type="button"
               onClick={addItem}
               disabled={isSpinning || items.length >= 10}
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -332,6 +334,8 @@ const SpinnerWheel = () => {
 
             {/* Spin Button */}
             <button
+              aria-label="Spin the wheel"
+              type="button"
               onClick={spin}
               disabled={items.length < 2 || isSpinning}
               className={`px-8 py-4 text-lg font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 ${
@@ -386,6 +390,8 @@ const SpinnerWheel = () => {
                     <span className="text-white font-medium">{item}</span>
                   </div>
                   <button
+                    aria-label={`Remove challenge ${item}`}
+                    type="button"
                     onClick={() => removeItem(i)}
                     disabled={isSpinning || items.length <= 2}
                     className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-red-400 hover:text-red-300 hover:bg-red-500/20 p-1 rounded disabled:opacity-30 disabled:cursor-not-allowed"

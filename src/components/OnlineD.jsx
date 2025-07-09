@@ -94,6 +94,8 @@ setButton("join room");
         )}
 
         <button
+          aria-label="Join Room"
+          type="button"
           onClick={handleJoin}
           className="w-full bg-white text-blue-600 font-bold py-2 rounded-lg hover:bg-blue-100 transition duration-300"
         >
@@ -102,6 +104,8 @@ setButton("join room");
       </div>
 
       <button
+        aria-label="Go Back"
+        type="button"
         onClick={handleBack}
         className="absolute top-4 left-4 text-white bg-black/40 hover:bg-black/60 px-3 py-1 rounded-lg text-sm font-semibold transition"
       >

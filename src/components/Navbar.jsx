@@ -23,7 +23,9 @@ const Navbar = () => {
       <nav className="bg-[#0f0f0f] shadow-lg sticky top-0 z-50 font-mono">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          <Link 
+          aria-label="Home"
+          to="/" className="flex items-center gap-2">
             <img
               src="/icon.jpg"
               alt="Logo"
@@ -34,6 +36,7 @@ const Navbar = () => {
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
+              aria-label="Toggle Menu"
               onClick={() => setMenuOpen(!menuOpen)}
               className="text-white focus:outline-none"
             >
@@ -47,6 +50,7 @@ const Navbar = () => {
               const isActive = pathname === link.path;
               return (
                 <Link
+                  aria-label={link.name}
                   key={link.name}
                   to={link.path}
                   className={`px-4 py-2 rounded-md transition-all duration-200 tracking-wider ${
@@ -84,7 +88,9 @@ const Navbar = () => {
                 className="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-[#1f1f1f] to-black z-50 p-6 space-y-5 shadow-xl border-r border-purple-700"
               >
                 <div className="text-2xl text-white font-extrabold mb-4 tracking-wider">
-                  <Link to="/" className="flex items-center gap-2">
+                  <Link 
+                  aria-label="Home"
+                  to="/" className="flex items-center gap-2">
                     <img
                       src="/icon.jpg"
                       alt="Logo"
@@ -96,6 +102,7 @@ const Navbar = () => {
                   const isActive = pathname === link.path;
                   return (
                     <Link
+                      aria-label={link.name}
                       key={link.name}
                       to={link.path}
                       onClick={() => setMenuOpen(false)}

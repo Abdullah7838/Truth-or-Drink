@@ -40,6 +40,7 @@ const ChatLauncher = () => {
 
       {/* 💬 Floating Chat Button */}
       <button
+        
         onClick={() => setShowChat((prev) => !prev)}
         className={`fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition transform ${
           !showChat ? "animate-bubble" : ""

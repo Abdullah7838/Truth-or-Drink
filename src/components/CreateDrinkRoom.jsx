@@ -78,6 +78,7 @@ function CreateDrinkRoom() {
         )}
 
         <button
+          aria-label="Create Room"
           type="submit"
           className="w-full bg-white cursor-pointer text-blue-600 font-bold py-3 rounded-lg hover:bg-blue-100 transition-all duration-300"
         >

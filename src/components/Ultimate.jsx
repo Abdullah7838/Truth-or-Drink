@@ -49,8 +49,12 @@ function Ultimate() {
           </p>
 
           <div className="flex flex-col gap-6">
-            <Link to="/ultimate-truth-and-drink">
+            <Link 
+              aria-label="Play Ultimate Truth & Drink"
+            to="/ultimate-truth-and-drink">
               <motion.button
+                aria-label="Play Ultimate Truth & Drink"
+                type="button"
                 whileHover={{ scale: 1.1, boxShadow: "0 0 25px #a855f7" }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full py-3 rounded-xl bg-purple-700 hover:bg-purple-800 transition-all duration-300 text-white text-xl font-semibold shadow-md shadow-purple-900"

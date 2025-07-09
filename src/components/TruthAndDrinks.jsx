@@ -295,6 +295,8 @@ const TruthAndDrinks = () => {
               <option value="18+">18+</option>
             </select>
             <button
+              aria-label="Start Game"
+              type="button"
               onClick={startGame}
               className="w-full bg-red-600 hover:bg-red-700 py-3 rounded-lg font-bold"
             >
@@ -321,12 +323,16 @@ const TruthAndDrinks = () => {
                   className="flex justify-center gap-4"
                 >
                   <button
+                    aria-label="Choose truth"
+                    type="button"
                     onClick={() => handleChoice("truth")}
                     className="px-6 py-3 bg-yellow-400 text-black rounded shadow"
                   >
                     Truth
                   </button>
                   <button
+                    aria-label="Choose dare"
+                    type="button"
                     onClick={() => handleChoice("dare")}
                     className="px-6 py-3 bg-red-600 text-white rounded shadow"
                   >
@@ -359,6 +365,8 @@ const TruthAndDrinks = () => {
                   </h3>
                   <p className="mb-4">{prompt}</p>
                   <button
+                    aria-label="Mark as done"
+                    type="button"
                     onClick={handleDone}
                     className="bg-green-600 hover:bg-green-700 px-5 py-2 rounded"
                   >
@@ -383,6 +391,8 @@ const TruthAndDrinks = () => {
               🏆 Winner: {getWinner()}
             </div>
             <button
+              aria-label="Play Again"
+              type="button"
               onClick={startGame}
               className="mt-6 bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 cursor-pointer rounded-lg"
             >

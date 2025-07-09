@@ -47,6 +47,7 @@ const Disclaimer = () => {
           </p>
 
           <Link
+            aria-label="Return to Game"
             to="/"
             className="mt-8 inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-pink-500 via-red-500 to-yellow-400 text-black font-bold tracking-wide shadow-lg hover:scale-105 transition"
           >

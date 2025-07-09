@@ -70,7 +70,9 @@ function Blogs() {
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {blogs.map((blog) => (
-          <Link to={`/${blog.link}`} key={blog.id}>
+          <Link
+            aria-label={`Read more about ${blog.title}`}
+           to={`/${blog.link}`} key={blog.id}>
             <div
               key={blog.id}
               className="bg-white shadow-lg rounded-xl cursor-pointer overflow-hidden transition-transform hover:scale-105"

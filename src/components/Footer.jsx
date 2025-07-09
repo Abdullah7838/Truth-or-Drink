@@ -8,7 +8,9 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Branding */}
           <div className="text-2xl font-bold tracking-wide drop-shadow-md">
-            <Link to="/" className="flex items-center gap-2">
+            <Link
+             aria-label="Go to Home"
+             to="/" className="flex items-center gap-2">
               <img
                 src="/icon.jpg"
                 alt="Logo"
@@ -20,12 +22,14 @@ const Footer = () => {
           {/* Navigation Links */}
           <div className="flex flex-col sm:flex-row gap-4 text-base font-medium text-white/90">
             <Link
+              aria-label="Home"
               to="/privacy"
               className="hover:underline hover:text-white transition-all duration-300"
             >
               Privacy Policy
             </Link>
             <Link
+              aria-label="Terms and Conditions"
               to="/tms"
               className="hover:underline hover:text-white transition-all duration-300"
             >

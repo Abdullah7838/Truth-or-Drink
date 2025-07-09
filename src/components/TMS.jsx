@@ -29,7 +29,10 @@ const TMS = () => {
 
         <h2 className="text-2xl font-bold mt-6 mb-2">4. Data & Privacy</h2>
         <p className="text-white/90 mb-4">
-          We collect minimal data only to support multiplayer functionality. You can read more in our <Link to="/privacy" className="underline text-white font-semibold hover:text-black">Privacy Policy</Link>.
+          We collect minimal data only to support multiplayer functionality. You can read more in our
+           <Link
+          aria-label="Privacy Policy"
+           to="/privacy" className="underline text-white font-semibold hover:text-black">Privacy Policy</Link>.
         </p>
 
         <h2 className="text-2xl font-bold mt-6 mb-2">5. Limitation of Liability</h2>

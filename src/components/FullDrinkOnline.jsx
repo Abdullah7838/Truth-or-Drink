@@ -230,6 +230,8 @@ useEffect(() => {
           🎮 Room: {room?.roomName}
         </h1>
         <button
+          aria-label="Share Room Link"
+          type="button"
           onClick={handleShare}
           className="mt-4 mb-4 cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl flex items-center gap-2 transition duration-300 shadow"
         >
@@ -280,6 +282,7 @@ useEffect(() => {
 
         <div className="flex justify-center gap-6 mt-4">
           <button
+            aria-label="Truth Button"
             onClick={() => handleTurn("truth")}
             disabled={!isMyTurn || turning}
             className={`transition px-6 py-3 rounded-full text-white font-semibold text-lg shadow-md hover:scale-105 duration-300 ${
@@ -291,6 +294,7 @@ useEffect(() => {
             🤫 Truth
           </button>
           <button
+            aria-label="Drink Button"
             onClick={() => handleTurn("dare")}
             disabled={!isMyTurn || turning}
             className={`transition px-6 py-3 rounded-full text-white font-semibold text-lg shadow-md hover:scale-105 duration-300 ${
@@ -341,6 +345,8 @@ useEffect(() => {
 
         <div className="flex items-center gap-3 mt-auto">
           <button
+            aria-label="Toggle Emoji Picker"
+            type="button"
             onClick={() => setShowEmoji(!showEmoji)}
             className="text-xl hover:scale-110 transition"
             title="Add emoji"
@@ -355,6 +361,8 @@ useEffect(() => {
             className="flex-1 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all"
           />
           <button
+            aria-label="Send message"
+            type="button"
             onClick={sendChat}
             className="bg-purple-600 text-white px-5 py-2 rounded-xl hover:bg-purple-700 transition"
           >
@@ -363,6 +371,8 @@ useEffect(() => {
         </div>
       </div>
       <button
+        aria-label="Go Back"
+        type="button"
         onClick={() => navigate(-1)}
         className="absolute top-4 left-4 text-white bg-black/40 hover:bg-black/60 px-3 py-1 rounded-lg text-sm font-semibold transition"
       >
