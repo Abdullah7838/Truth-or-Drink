@@ -1,11 +1,11 @@
 import React from "react";
-import blog2 from "../assets/blog2.2.jpeg";
+import blog2 from "../assets/blog2.2.webp";
 import { Link } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
-import blog1 from '../assets/blog1.1.jpeg'
-import blog3 from '../assets/blog3.1.jpeg'
-import blog4 from '../assets/blog4.2.jpeg'
-import blog5 from '../assets/blog4.1.jpeg'
+import blog1 from '../assets/blog1.1.webp'
+import blog3 from '../assets/blog3.1.webp'
+import blog4 from '../assets/blog4.2.webp'
+import blog5 from '../assets/blog4.1.webp'
 
 
 const blogs = [
@@ -40,7 +40,7 @@ const Blog2 = () => {
     <div className="bg-white text-black px-4 sm:px-6 md:px-10 lg:px-12 py-10 max-w-5xl mx-auto">
       <img
         src={blog2}
-        alt="Thumbnail for 110 Deep Truth or Drink Questions"
+        alt="Illustration for deep truth questions"
         className="w-full h-auto rounded-lg mb-8"
       />
 

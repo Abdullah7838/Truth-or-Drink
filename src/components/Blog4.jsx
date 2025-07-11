@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
-import blog3 from '../assets/blog4.2.jpeg';
-import blog1 from '../assets/blog1.1.jpeg'
-import blog2 from '../assets/blog2.2.jpeg'
-import blog4 from '../assets/blog4.2.jpeg'
-import blog5 from '../assets/blog4.1.jpeg'
+import blog3 from '../assets/blog4.2.webp';
+import blog1 from '../assets/blog1.1.webp'
+import blog2 from '../assets/blog2.2.webp'
+import blog4 from '../assets/blog4.2.webp'
+import blog5 from '../assets/blog4.1.webp'
 
 
 const blogs = [
@@ -38,7 +38,7 @@ const blogs = [
 function Blog4() {
   return (
     <div className="bg-white text-black px-4 sm:px-8 md:px-12 lg:px-16 py-8 max-w-5xl mx-auto">
-      <img src={blog3} alt="Thumbnail for 80 Funny Truth or Drink" className="w-full h-auto mb-8 rounded-lg" />
+      <img src={blog3} alt="Funny Truth or Drink post cover" className="w-full h-auto mb-8 rounded-lg" />
       <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
         80 Funny Truth or Drink Questions: Hilarious and Entertaining Questions for Your Next Game Night
       </h1>

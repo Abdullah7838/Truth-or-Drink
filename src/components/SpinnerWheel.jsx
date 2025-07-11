@@ -218,7 +218,7 @@ const SpinnerWheel = () => {
       {/* Toast Notification */}
       {showToast && (
         <div
-          className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-md transition-all duration-300 ${
+          className={`fixed bottom-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-md transition-all duration-300 ${
             showToast.type === "error"
               ? "bg-red-500 text-white"
               : "bg-green-500 text-white"
@@ -253,7 +253,7 @@ const SpinnerWheel = () => {
         </div>
       )}
 
-      <div className="max-w-4xl w-full space-y-8 relative z-10">
+      <div className="max-w-4xl w-full  space-y-8 relative z-10">
         {/* Header */}
         <div className="text-center space-y-4">
           <h1 className="text-6xl font-black bg-gradient-to-r from-white via-purple-200 to-cyan-200 bg-clip-text text-transparent drop-shadow-2xl">

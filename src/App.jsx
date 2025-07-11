@@ -3,7 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import SpinnerAlready from './components/SpinnerAlready'; // fallback loader
+import SpinnerAlready from './components/SpinnerAlready';
+import LoadingScreen from './components/LoadingScreen';
+import Subscriber from './components/Subscriber.jsx';
+import UnSubscribe from './components/UnSubscribe.jsx';
+import BotChatMode from './components/BotChatMode.jsx';
 
 // Lazy-loaded components
 const Home = lazy(() => import('./components/Home'));
@@ -30,7 +34,6 @@ const Blog4 = lazy(() => import('./components/Blog4'));
 const Blog5 = lazy(() => import('./components/Blog5'));
 const QuizMode = lazy(() => import('./components/QuizMode'));
 const TruthRunning = lazy(() => import('./components/TruthRunning'));
-import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   const [myusername, setMainUsername] = useState('');
@@ -39,7 +42,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <Navbar />
-
+     <Subscriber />
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route path="/" element={<Home setMainUsername={setMainUsername} myusername={myusername} />} />
@@ -65,6 +68,8 @@ function App() {
           <Route path="/100-fun-truth-or-drink-questions-for-game-night" element={<Blog5 />} />
           <Route path="/quiz" element={<QuizMode />} />
           <Route path="/truth-running" element={<TruthRunning />} />
+          <Route path="/unsubscribe" element={<UnSubscribe />} />
+          <Route path="/quick-match" element={<BotChatMode />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Suspense>

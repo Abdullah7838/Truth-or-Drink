@@ -40,6 +40,7 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex gap-4 text-xl">
             <a
+              aria-label="GitHub"
               href="https://github.com/Abdullah7838"
               target="_blank"
               rel="noopener noreferrer"
@@ -47,7 +48,8 @@ const Footer = () => {
             >
               <FaGithub />
             </a>
-            <a
+            <a 
+              aria-label="Twitter"
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import blog1 from "../assets/blog1.1.jpeg";
-import blog2 from "../assets/blog2.2.jpeg";
-import blog3 from "../assets/blog3.1.jpeg";
-import blog4 from "../assets/blog4.2.jpeg";
+import blog1 from "../assets/blog1.1.webp";
+import blog2 from "../assets/blog2.2.webp";
+import blog3 from "../assets/blog3.1.webp";
+import blog4 from "../assets/blog4.2.webp";
 const blogs = [
   {
     id: 1,
