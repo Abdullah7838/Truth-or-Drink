@@ -5,6 +5,7 @@ import blog2 from '../assets/blog2.2.webp'
 import blog3 from '../assets/blog3.1.webp'
 import blog4 from '../assets/blog4.2.webp'
 import blog5 from '../assets/blog4.1.webp'
+import blog6 from "../assets/blog6.jpeg";
 import { Helmet } from "react-helmet-async";
 
 
@@ -39,6 +40,12 @@ const blogs = [
     title: " 100 Fun Truth or Drink Questions for Game Night...",
     link:"100-fun-truth-or-drink-questions-for-game-night",
   },
+     {
+        id: 5,
+        image: `${blog6}`,
+        title: "101+ Deep Truth or Drink Questions to Really Open Up",
+        link:"101-deep-truth-or-drink-questions-to-really-open-up",
+      },
 ];
 
 

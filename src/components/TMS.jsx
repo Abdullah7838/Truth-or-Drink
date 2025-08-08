@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const TMS = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-700 px-6 py-12 text-white flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex flex-col items-center text-white pt-12">
       <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl max-w-3xl w-full p-8">
         <h1 className="text-4xl font-extrabold mb-6 text-white drop-shadow-md text-center">Terms & Conditions</h1>
 

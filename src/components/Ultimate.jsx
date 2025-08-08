@@ -29,7 +29,7 @@ function Ultimate() {
 
       <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center text-center text-white font-mono">
         {/* Background fog effect */}
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/fog.png')] opacity-5 z-0" />
+        <div className="absolute inset-0 bg-[url('https://blogger.googleusercontent.com/img/a/AVvXsEgVhCnGS6u7HCO-kr7eVyJWxMruddrqQ0XZmOnEApvO_fV3j3jTOmdKkZYKATLltYpuSq7dLilTyGmTg0-vZ_7fvf-3amLVUCqZdusQF-bwtJ5vU6-qNC64NO57RLgLRI7u9BO_usN7QKnlcyUPf8kPOFejMIlZkvrjNmr0J0Kf2u1bFPSvgNLCe401puo')] opacity-5 z-0" />
 
         {/* Horror red glow */}
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/30 to-black z-0 blur-3xl" />
@@ -67,7 +67,7 @@ function Ultimate() {
 
         {/* Fog overlay animation (optional eerie effect) */}
         <motion.div
-          className="absolute inset-0 pointer-events-none bg-[url('https://i.ibb.co/dDZvXr5/fog.gif')] opacity-10 z-0"
+          className="absolute inset-0 pointer-events-none bg-[url('https://blogger.googleusercontent.com/img/a/AVvXsEgVhCnGS6u7HCO-kr7eVyJWxMruddrqQ0XZmOnEApvO_fV3j3jTOmdKkZYKATLltYpuSq7dLilTyGmTg0-vZ_7fvf-3amLVUCqZdusQF-bwtJ5vU6-qNC64NO57RLgLRI7u9BO_usN7QKnlcyUPf8kPOFejMIlZkvrjNmr0J0Kf2u1bFPSvgNLCe401puo')] opacity-10 z-0"
           animate={{ opacity: [0.05, 0.15, 0.05] }}
           transition={{ duration: 10, repeat: Infinity }}
         />

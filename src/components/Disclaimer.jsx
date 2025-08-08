@@ -27,22 +27,22 @@ const Disclaimer = () => {
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-b from-black via-purple-900 to-black text-white p-6 flex items-center justify-center font-mono">
-        <div className="max-w-2xl w-full bg-black/60 border border-purple-700 rounded-2xl p-8 shadow-xl text-center relative">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex flex-col items-center text-white pt-12 px-4">
+        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl max-w-3xl w-full p-8 text-center">
           <div className="flex justify-center mb-4">
             <AlertTriangle className="text-yellow-400" size={40} />
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-600">
+          <h1 className="text-3xl md:text-4xl text-white font-extrabold mb-4 bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-600">
             Disclaimer
           </h1>
 
-          <p className="text-lg text-gray-300 leading-relaxed">
+          <p className="text-lg text-white/80 leading-relaxed">
             This game is designed for entertainment purposes only. If you are
             under 13, please use this website with parental supervision.
           </p>
 
-          <p className="mt-6 text-sm text-gray-500 italic">
+          <p className="mt-6 text-sm text-white/60 italic">
             We are not responsible for any actions taken during gameplay.
           </p>
 

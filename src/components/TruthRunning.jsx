@@ -89,7 +89,7 @@ const TruthRunning = () => {
     const interval = setInterval(() => {
       setScore((s) => s + 1);
       setTimePassed((t) => t + 1);
-    }, 500);
+    }, 1000);
     return () => clearInterval(interval);
   }, [gameRunning]);
 

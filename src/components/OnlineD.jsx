@@ -33,6 +33,11 @@ function OnlineD({ setMainUsername }) {
       setError("⚠️ Username is required");
       return;
     }
+     if (/[^a-zA-Z0-9 ]/.test(trimmedName)) {
+      setButton("join room");
+   setError('Username cannot contain special characters');
+   return;
+}
 
     try {
       const res = await axios.patch(

@@ -14,6 +14,10 @@ function CreateDrinkRoom() {
     setError('Please fill in all fields');
     return;
   }
+ if (/[^a-zA-Z0-9 ]/.test(roomname.trim())) {
+  setError('RoomName cannot contain special characters');
+  return;
+}
   setButton('Creating...')
   try {
     const res = await axios.post('https://truth-or-dare-backend-1kg2.onrender.com/drink/api/createRoom', {

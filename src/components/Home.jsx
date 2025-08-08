@@ -48,7 +48,7 @@ function Home({ setMainUsername }) {
         <meta name="robots" content="index, follow" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex flex-col items-center text-white pt-12">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex flex-col items-center text-white">
         {/* Header Box */}
         <div className="w-full max-w-4xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8 sm:p-12 text-center mb-16">
           <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 drop-shadow-lg">
@@ -60,7 +60,7 @@ function Home({ setMainUsername }) {
 
           {/* Game Options */}
           {/* Game Options */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-semibold w-full max-w-2xl mx-auto mt-12 px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-semibold w-full max-w-2xl mx-auto mt-4 px-4">
             {/* Play Online */}
             <Link aria-label="Play Online" to="/drink-room">
               <button
@@ -86,6 +86,95 @@ function Home({ setMainUsername }) {
                 Play Offline
               </button>
             </Link>
+
+            {/* Card and other  */}
+            <div className="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+              <Link aria-label="Quiz Mode" to="/truth-or-drink-card-game">
+                <div className="relative w-full">
+                  {/* NEW Badge */}
+                  <span className="absolute -top-2 -left-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md z-10">
+                    UNO
+                  </span>
+
+                  {/* Button */}
+                  <button
+                    aria-label="Quiz Mode"
+                    className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-50 text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-indigo-50 transition-all duration-200 active:scale-95 active:bg-indigo-100"
+                  >
+                    <div className="bg-indigo-500 p-2 rounded-full shadow-sm">
+                      <FaPlay className="text-white w-4 h-4" />
+                    </div>
+                    Cards Game
+                  </button>
+                </div>
+              </Link>
+
+              <Link aria-label="Quiz Mode" to="/extreme-truth-or-drink-questions">
+                <div className="relative w-full">
+                  {/* NEW Badge */}
+                  <span className="absolute -top-2 -left-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md z-10">
+                    Hard
+                  </span>
+
+                  {/* Button */}
+                  <button
+                    aria-label="Quiz Mode"
+                    className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-50 text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-indigo-50 transition-all duration-200 active:scale-95 active:bg-indigo-100"
+                  >
+                    <div className="bg-indigo-500 p-2 rounded-full shadow-sm">
+                      <FaPlay className="text-white w-4 h-4" />
+                    </div>
+                    Extreme Edition
+                  </button>
+                </div>
+              </Link>
+
+            </div>
+
+
+            {/* Couple and spicyies mode  */}
+             <div className="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+              <Link aria-label="Quiz Mode" to="/truth-or-drink-questions-spicy">
+                <div className="relative w-full">
+                  {/* NEW Badge */}
+                  <span className="absolute -top-2 -left-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md z-10">
+                    Hot
+                  </span>
+
+                  {/* Button */}
+                  <button
+                    aria-label="Spicy Edition"
+                    className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-50 text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-indigo-50 transition-all duration-200 active:scale-95 active:bg-indigo-100"
+                  >
+                    <div className="bg-indigo-500 p-2 rounded-full shadow-sm">
+                      <FaPlay className="text-white w-4 h-4" />
+                    </div>
+                    Spicy Edition
+                  </button>
+                </div>
+              </Link>
+
+              <Link aria-label="Quiz Mode" to="/truth-or-drink-for-couples">
+                <div className="relative w-full">
+                  {/* NEW Badge */}
+                  <span className="absolute -top-2 -left-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md z-10">
+                    Extreme
+                  </span>
+
+                  {/* Button */}
+                  <button
+                    aria-label="Couples Edition"
+                    className="flex items-center justify-center gap-3 w-full cursor-pointer bg-gray-50 text-gray-900 border border-gray-400 rounded-full px-6 py-3 text-lg font-semibold shadow-md hover:shadow-xl hover:bg-indigo-50 transition-all duration-200 active:scale-95 active:bg-indigo-100"
+                  >
+                    <div className="bg-indigo-500 p-2 rounded-full shadow-sm">
+                      <FaPlay className="text-white w-4 h-4" />
+                    </div>
+                    Couples Edition
+                  </button>
+                </div>
+              </Link>
+
+            </div>
             
 
             {/* Play Ultimate – centered full on mobile, half on PC */}

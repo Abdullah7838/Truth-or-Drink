@@ -25,7 +25,7 @@ const Privacy = () => {
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-purple-700 via-pink-600 to-yellow-400 px-6 py-12 text-white flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex flex-col items-center text-white pt-12">
         <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl max-w-3xl w-full p-8">
           <h1 className="text-4xl font-extrabold mb-6 text-white drop-shadow-md text-center">
             Privacy Policy
