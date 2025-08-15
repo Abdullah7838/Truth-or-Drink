@@ -42,6 +42,8 @@ const Blog2 = () => {
         src={blog2}
         alt="Illustration for deep truth questions"
         className="w-full h-auto rounded-lg mb-8"
+          loading="lazy"
+
       />
 
       <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center">
@@ -936,6 +938,8 @@ const Blog2 = () => {
                             src={blog.image}
                             alt={blog.title}
                             className="w-full h-full object-cover"
+                              loading="lazy"
+
                           />
                           <div className="p-4">
                             <h3 className="text-xl font-semibold mb-2 text-black">

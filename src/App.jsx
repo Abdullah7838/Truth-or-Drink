@@ -1,45 +1,44 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, {Suspense, lazy } from "react";
 import { Component } from 'react';
 import { useLocation } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
-import SpinnerAlready from "./components/SpinnerAlready";
-import LoadingScreen from "./components/LoadingScreen";
-import Subscriber from "./components/Subscriber.jsx";
-import UnSubscribe from "./components/UnSubscribe.jsx";
-import BotChatMode from "./components/BotChatMode.jsx";
-import SupportMe from "./components/SupportMe.jsx";
-import BuyMeACoffee from "./components/BuyMeACoffee.jsx";
-import Cookies from "./components/Cookies.jsx";
-import DMCA from "./components/DMCA.jsx";
-import GdprCompliance from "./components/GdprCompliance.jsx";
-import Home from "./components/Home";
-import Blog6 from "./components/Blog6.jsx";
-import Spicy from './components/Spicy.jsx'
-import Couples from "./components/Couples.jsx";
-import Cards from "./components/Cards.jsx";
-import Extreme from "./components/Extreme.jsx";
-import PopUpCommunity from "./components/PopUpCommunity.jsx";
+const Home = lazy(() => import("./components/Home"));
+import LoadingScreen from './components/LoadingScreen'
+const Navbar = lazy(() => import("./components/Navbar"));
+const Footer = lazy(() => import("./components/Footer"));
+const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
+const SpinnerAlready = lazy(() => import('./components/SpinnerAlready'));
+const Subscriber = lazy(() => import('./components/Subscriber'));
+const BotChatMode = lazy(() => import('./components/BotChatMode'));
+const BuyMeACoffee = lazy(() => import('./components/BuyMeACoffee'));
+const Cookies = lazy(() => import('./components/Cookies'));
+const DMCA = lazy(() => import('./components/DMCA'));
+const GdprCompliance = lazy(() => import('./components/GdprCompliance'));
+const Blog6 = lazy(() => import('./components/Blog6'));
+const Spicy = lazy(() => import('./components/Spicy'));
+const Couples = lazy(() => import('./components/Couples'));
+const Cards = lazy(() => import('./components/Cards'));
+const Extreme = lazy(() => import('./components/Extreme'));
 
 //Community
-import Main from './community/Main';
-import Login from './community/Login';
-import Signup from './community/Signup';
-import CommunityHome from './community/CommunityHome.jsx.jsx';
-import Profile from './community/Profile';
-import Comments from './community/Comments';
-import Account from './community/Account';
-import CommunityNavbar from './community/CommunityNavbar';
-import Admin from './Admin/Admin';
-import CommunityNotFound from './community/CommunityNotFound';
-import UsersAdmin from './Admin/UsersAdmin';
-import Friends from './community/Friends';
-import AdminLogin from './Admin/AdminLogin';
+const Main = lazy(() => import('./community/Main'));
+const Login = lazy(() => import('./community/Login'));
+const Signup = lazy(() => import('./community/Signup'));
+const CommunityHome = lazy(() => import('./community/CommunityHome'));
+const Profile = lazy(() => import('./community/Profile'));
+const Comments = lazy(() => import('./community/Comments'));
+const CommunityNavbar = lazy(() => import('./community/CommunityNavbar'));
+const CommunityNotFound = lazy(() => import('./community/CommunityNotFound'));
+const Friends = lazy(() => import('./community/Friends'));
 
 
 // Lazy-loaded components
+const Admin = lazy(() => import('./Admin/Admin'));
+const AdminLogin = lazy(() => import('./Admin/AdminLogin'));
+const Account = lazy(() => import('./community/Account'));
+const SupportMe = lazy(() => import("./components/SupportMe"));
+const UnSubscribe = lazy(() => import("./components/UnSubscribe"));
+const UsersAdmin = lazy(() => import("./Admin/UsersAdmin"));
 const Privacy = lazy(() => import("./components/Privacy"));
 const TMS = lazy(() => import("./components/TMS"));
 const Contact = lazy(() => import("./components/Contact"));
@@ -110,13 +109,12 @@ render() {
     return (
 
     <Router>
+      <Suspense fallback={<LoadingScreen />}>
       <BuyMeACoffee/>
       <ScrollToTop />
       {/* <Navbar /> */}
       <NavbarWrapper logout={this.logout} />
       <Subscriber />
-      <PopUpCommunity/>
-      <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route
             path="/"
@@ -129,12 +127,12 @@ render() {
            <Route path="/gdpr-compliance" element={<GdprCompliance />} />
           <Route path="/cookie-policy" element={<Cookies />} />
           <Route path="/terms-and-conditions" element={<TMS />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/contact-us" element={<Contact />} />
+          <Route path="/about-us" element={<About />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/ultimate" element={<Ultimate />} />
+          <Route path="/truth-or-drink-scary-mommy" element={<Ultimate />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
-          <Route path="/offline-truth-or-drink" element={<OfflineDrink />} />
+          <Route path="/truth-or-drink-offline" element={<OfflineDrink />} />
           <Route
             path="/online-truth-or-drink"
             element={
@@ -145,7 +143,7 @@ render() {
             }
           />
           <Route
-            path="/drink-room"
+            path="/truth-or-drink-online"
             element={<DrinkRooms setMainUsername={this.setMainUsername} />}
           />
           <Route
@@ -171,11 +169,11 @@ render() {
             element={<TruthAndDrinks />}
           />
           <Route
-            path="/truth-or-drink-questions-spicy"
+            path="/truth-or-drink-spicy-questions"
             element={<Spicy />}
           />
            <Route
-            path="/truth-or-drink-for-couples"
+            path="/truth-or-drink-questions-for-couples"
             element={<Couples />}
           />
           <Route
@@ -210,10 +208,10 @@ render() {
             path="/101-deep-truth-or-drink-questions-to-really-open-up"
             element={<Blog6 />}
           />
-          <Route path="/quiz" element={<QuizMode />} />
-          <Route path="/truth-running" element={<TruthRunning />} />
+          <Route path="/truth-or-drink-adults" element={<QuizMode />} />
+          <Route path="/truth-or-drink-single-player-mode" element={<TruthRunning />} />
           <Route path="/unsubscribe" element={<UnSubscribe />} />
-          <Route path="/quick-match" element={<BotChatMode />} />
+          <Route path="/drinking-game-online" element={<BotChatMode />} />
           <Route path="/buy-me-a-coffee" element={<SupportMe />} />
           <Route path="/*" element={<NotFound />} />
 
@@ -235,11 +233,11 @@ render() {
           <Route path="community/not-found" element={<CommunityNotFound />} />
 
           <Route path="community/" element={<CommunityHome email={this.state.email} />} />
-        
+
         </Routes>
-      </Suspense>
 
       <Footer />
+      </Suspense>
     </Router>
  );
   }

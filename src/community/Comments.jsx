@@ -21,7 +21,7 @@ function Comments({ email }) {
   const fetchProfileImage = async (email) => {
     try {
       const timestamp = new Date().getTime();
-      const response = await fetch(`http://localhost:3001/api/get-profile?email=${email}`);
+      const response = await fetch(`https://twitter-backend-inky.vercel.app/api/get-profile?email=${email}`);
       const data = await response.json();
       if (response.ok) {
         setPreview(prev => ({
@@ -40,7 +40,7 @@ function Comments({ email }) {
     const fetchMyProfilePhoto = async () => {
       try {
         const timestamp = new Date().getTime();
-        const response = await fetch(`http://localhost:3001/api/get-profile?email=${email}`);
+        const response = await fetch(`https://twitter-backend-inky.vercel.app/api/get-profile?email=${email}`);
         const data = await response.json();
         if (response.ok) {
           setmyPreview(data.profilePhoto);
@@ -62,7 +62,7 @@ function Comments({ email }) {
     const fetchUserProfilePhoto = async () => {
       try {
         const timestamp = new Date().getTime();
-        const response = await fetch(`http://localhost:3001/api/get-profile?email=${Uemail}`);
+        const response = await fetch(`https://twitter-backend-inky.vercel.app/api/get-profile?email=${Uemail}`);
         const data = await response.json();
         if (response.ok) {
           setUserPreview(data.profilePhoto);
@@ -82,10 +82,10 @@ function Comments({ email }) {
   useEffect(() => {
     const fetchPostAndComments = async () => {
       try {
-        const postRes = await axios.get(`http://localhost:3001/api/post/${id}`);
+        const postRes = await axios.get(`https://twitter-backend-inky.vercel.app/api/post/${id}`);
         setPost(postRes.data.post);
 
-        const commentsRes = await axios.get(`http://localhost:3001/api/comments/${id}`);
+        const commentsRes = await axios.get(`https://twitter-backend-inky.vercel.app/api/comments/${id}`);
         setComments(commentsRes.data.comments);
         setUEmail(commentsRes.data.email);
         const postsData = commentsRes.data.comments;
@@ -139,7 +139,7 @@ function Comments({ email }) {
       // Get username from localStorage
       const username = localStorage.getItem('username');
       
-      const res = await axios.post(`http://localhost:3001/api/comments/${id}`, {
+      const res = await axios.post(`https://twitter-backend-inky.vercel.app/api/comments/${id}`, {
         email,
         comment,
         username
@@ -248,19 +248,22 @@ function Comments({ email }) {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <input
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                onKeyDown={handleKeyPress}
-                placeholder="Add a comment"
-                className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-              />
-              <button
-                onClick={handlePostComment}
-                className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
-              >
-                Post
-              </button>
+              <div className="flex items-center w-full gap-2">
+  <input
+    value={comment}
+    onChange={(e) => setComment(e.target.value)}
+    onKeyDown={handleKeyPress}
+    placeholder="Add a comment"
+    className="flex-1 min-w-0 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+  />
+  <button
+    onClick={handlePostComment}
+    className="px-4 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition whitespace-nowrap"
+  >
+    Post
+  </button>
+</div>
+
             </div>
           </div>
         </div>

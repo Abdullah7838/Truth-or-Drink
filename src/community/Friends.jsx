@@ -10,7 +10,7 @@ function Friends(props) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/admin");
+        const res = await axios.get("https://twitter-backend-inky.vercel.app/api/admin");
         setUsers(res.data.data);
       } catch (error) {
         console.error("Error fetching users:", error);

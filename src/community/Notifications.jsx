@@ -34,7 +34,7 @@ function Notifications({ email, isOpen, onClose }) {
       setLoading(true);
       try {
         // Fetch user's posts
-        const postsResponse = await axios.get(`http://localhost:3001/api/user/${email}`);
+        const postsResponse = await axios.get(`https://twitter-backend-inky.vercel.app/api/user/${email}`);
         const userPosts = postsResponse.data;
 
         // Process likes and comments on user's posts
@@ -74,7 +74,7 @@ function Notifications({ email, isOpen, onClose }) {
         }
 
         // Fetch followers
-        const followersResponse = await axios.post('http://localhost:3001/api/followers', { email });
+        const followersResponse = await axios.post('https://twitter-backend-inky.vercel.app/api/followers', { email });
         const followers = followersResponse.data.followers || [];
 
         // Add followers to notifications
@@ -95,7 +95,7 @@ function Notifications({ email, isOpen, onClose }) {
 
         for (const userEmail of uniqueEmails) {
           try {
-            const response = await fetch(`http://localhost:3001/api/get-profile?email=${userEmail}`);
+            const response = await fetch(`https://twitter-backend-inky.vercel.app/api/get-profile?email=${userEmail}`);
             const data = await response.json();
             if (response.ok) {
               profilePhotos[userEmail] = data.profilePhoto;

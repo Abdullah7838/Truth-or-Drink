@@ -38,7 +38,8 @@ const blogs = [
 function Blog4() {
   return (
     <div className="bg-white text-black px-4 sm:px-8 md:px-12 lg:px-16 py-8 max-w-5xl mx-auto">
-      <img src={blog3} alt="Funny Truth or Drink post cover" className="w-full h-auto mb-8 rounded-lg" />
+      <img src={blog3} alt="Funny Truth or Drink post cover" className="w-full h-auto mb-8 rounded-lg"   loading="lazy"
+/>
       <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
         80 Funny Truth or Drink Questions: Hilarious and Entertaining Questions for Your Next Game Night
       </h1>
@@ -243,6 +244,8 @@ aria-label='Play Online'
                             src={blog.image}
                             alt={blog.title}
                             className="w-full h-full object-cover"
+                              loading="lazy"
+
                           />
                           <div className="p-4">
                             <h3 className="text-xl font-semibold mb-2 text-black">

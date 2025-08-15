@@ -21,7 +21,7 @@ function UsersAdmin({ isAdmin }) {
     const fetchUser = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:3001/api/admin`);
+        const res = await axios.get(`https://twitter-backend-inky.vercel.app/api/admin`);
         setUser(res.data.data[0]);
       } catch (err) {
         console.error("Error fetching user:", err);
@@ -30,7 +30,7 @@ function UsersAdmin({ isAdmin }) {
 
     const fetchPosts = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/api/user/${email}`);
+        const res = await axios.get(`https://twitter-backend-inky.vercel.app/api/user/${email}`);
         setPosts(res.data);
       } catch (err) {
         console.error("Error fetching posts:", err);
@@ -47,7 +47,7 @@ function UsersAdmin({ isAdmin }) {
     setSelectedPostId(postId);
     try {
       const res = await axios.get(
-        `http://localhost:3001/api/comments/${postId}`
+        `https://twitter-backend-inky.vercel.app/api/comments/${postId}`
       );
       setComments(res.data.comments);
     } catch (err) {
@@ -57,7 +57,7 @@ function UsersAdmin({ isAdmin }) {
 
   const deletePost = async (postId) => {
     try {
-      await axios.delete(`http://localhost:3001/api/posts/${postId}`);
+      await axios.delete(`https://twitter-backend-inky.vercel.app/api/posts/${postId}`);
       setPosts(posts.filter((post) => post._id !== postId));
       toast.success("Post deleted successfully!", {
         style: {
@@ -76,7 +76,7 @@ function UsersAdmin({ isAdmin }) {
 
   const deleteComment = async (commentId) => {
     try {
-      await axios.delete(`http://localhost:3001/api/comments/${commentId}`);
+      await axios.delete(`https://twitter-backend-inky.vercel.app/api/comments/${commentId}`);
       setComments(comments.filter((comment) => comment._id !== commentId));
       toast.success("Comment deleted successfully!", {
         style: {

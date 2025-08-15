@@ -13,7 +13,7 @@ function AdminLogin({ setAdmin }) {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/api/admin-login', {
+      const response = await axios.post('https://twitter-backend-inky.vercel.app/api/admin-login', {
         email,
         password
       });

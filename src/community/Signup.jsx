@@ -32,7 +32,7 @@ const navigate = useNavigate();
             }
             
             try {
-                const response = await axios.get(`http://localhost:3001/api/check-username/${username}`);
+                const response = await axios.get(`https://twitter-backend-inky.vercel.app/api/check-username/${username}`);
                 setUsernameAvailable(response.data.available);
                 setUsernameError(response.data.available ? '' : response.data.message);
             } catch (error) {
@@ -57,7 +57,7 @@ const navigate = useNavigate();
         }
         
         try {
-            const res = await axios.post('http://localhost:3001/api/signup', {
+            const res = await axios.post('https://twitter-backend-inky.vercel.app/api/signup', {
                 username,
                 email,
                 password

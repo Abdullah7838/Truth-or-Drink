@@ -26,7 +26,7 @@ function UserSettings({ email, isOpen, onClose }) {
     // Fetch profile photo
     const fetchProfilePhoto = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/api/get-profile?email=${email}`);
+        const response = await fetch(`https://twitter-backend-inky.vercel.app/api/get-profile?email=${email}`);
         const data = await response.json();
         if (response.ok) {
           setProfilePhoto(data.profilePhoto);
@@ -40,7 +40,7 @@ function UserSettings({ email, isOpen, onClose }) {
     // Fetch followers
     const fetchFollowers = async () => {
       try {
-        const response = await axios.post('http://localhost:3001/api/followers', { email });
+        const response = await axios.post('https://twitter-backend-inky.vercel.app/api/followers', { email });
         setFollowers(response.data.followers || []);
       } catch (error) {
         console.error("Error fetching followers:", error);
@@ -51,7 +51,7 @@ function UserSettings({ email, isOpen, onClose }) {
     const fetchFollowing = async () => {
       try {
         // Get all users
-        const usersResponse = await axios.get('http://localhost:3001/api/admin');
+        const usersResponse = await axios.get('https://twitter-backend-inky.vercel.app/api/admin');
         const allUsers = usersResponse.data.data;
         
         // Filter users where the current user is in their followers list
@@ -82,7 +82,7 @@ function UserSettings({ email, isOpen, onClose }) {
 
       for (const userEmail of uniqueUsers) {
         try {
-          const response = await fetch(`http://localhost:3001/api/get-profile?email=${userEmail}`);
+          const response = await fetch(`https://twitter-backend-inky.vercel.app/api/get-profile?email=${userEmail}`);
           const data = await response.json();
           if (response.ok) {
             profiles[userEmail] = data.profilePhoto;
@@ -131,7 +131,7 @@ function UserSettings({ email, isOpen, onClose }) {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:3001/api/upload-profile", {
+      const res = await axios.post("https://twitter-backend-inky.vercel.app/api/upload-profile", {
         email: email,
         image: image,
       });
@@ -160,7 +160,7 @@ function UserSettings({ email, isOpen, onClose }) {
     setLoading(true);
     try {
       // Call the backend to update username
-      await axios.post("http://localhost:3001/api/update-username", {
+      await axios.post("https://twitter-backend-inky.vercel.app/api/update-username", {
         email,
         username
       });
@@ -202,7 +202,7 @@ function UserSettings({ email, isOpen, onClose }) {
     setLoading(true);
     try {
       // This endpoint needs to be implemented in the backend
-      await axios.post("http://localhost:3001/api/change-password", {
+      await axios.post("https://twitter-backend-inky.vercel.app/api/change-password", {
         email,
         currentPassword,
         newPassword
@@ -235,7 +235,7 @@ function UserSettings({ email, isOpen, onClose }) {
     setLoading(true);
     try {
       // This endpoint needs to be implemented in the backend
-      await axios.post("http://localhost:3001/api/reset-password", {
+      await axios.post("https://twitter-backend-inky.vercel.app/api/reset-password", {
         email: resetEmail
       });
       

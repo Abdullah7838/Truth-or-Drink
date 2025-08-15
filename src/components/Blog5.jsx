@@ -38,7 +38,8 @@ const blogs = [
 function Blog5() {
   return (
     <div className="bg-white text-black px-4 sm:px-8 md:px-12 lg:px-16 py-8 max-w-5xl mx-auto">
-              <img src={blog3} alt="Night Game" className="w-full h-auto mb-8 rounded-lg" />
+              <img src={blog3} alt="Night Game" className="w-full h-auto mb-8 rounded-lg"   loading="lazy"
+/>
         
       {/* Title */}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6">
@@ -237,6 +238,8 @@ function Blog5() {
                             src={blog.image}
                             alt={blog.title}
                             className="w-full h-full object-cover"
+                              loading="lazy"
+
                           />
                           <div className="p-4">
                             <h3 className="text-xl font-semibold mb-2 text-black">

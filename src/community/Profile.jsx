@@ -24,7 +24,7 @@ function Profile(props) {
   useEffect(() => {
     const fetchAllUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/admin");
+        const res = await axios.get("https://twitter-backend-inky.vercel.app/api/admin");
         const data = res.data.data;
         const userFound = data.some((user) => user.email === email);
         if (!userFound) {
@@ -74,7 +74,7 @@ function Profile(props) {
     }
 
     try {
-      const res = await axios.post("http://localhost:3001/api/upload-profile", {
+      const res = await axios.post("https://twitter-backend-inky.vercel.app/api/upload-profile", {
         email: email,
         image: image,
       });
@@ -92,7 +92,7 @@ function Profile(props) {
     const fetchProfilePhoto = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3001/api/get-profile?email=${email}`
+          `https://twitter-backend-inky.vercel.app/api/get-profile?email=${email}`
         );
         const data = await response.json();
         if (response.ok) {
@@ -113,7 +113,7 @@ function Profile(props) {
   useEffect(() => {
     const fetchFollowers = async () => {
       const followers = await axios.post(
-        "http://localhost:3001/api/followers",
+        "https://twitter-backend-inky.vercel.app/api/followers",
         { email }
       );
       SetFollowers(followers.data.followers.length);
@@ -130,7 +130,7 @@ function Profile(props) {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/user/${email}`
+          `https://twitter-backend-inky.vercel.app/api/user/${email}`
         );
         setPosts(response.data);
       } catch (error) {
@@ -146,7 +146,7 @@ function Profile(props) {
 
   const deletePost = async (postId) => {
     try {
-      await axios.delete(`http://localhost:3001/api/${postId}`);
+      await axios.delete(`https://twitter-backend-inky.vercel.app/api/${postId}`);
       setPosts(posts.filter((post) => post._id !== postId));
       toast.success("Post deleted successfully!");
     } catch (error) {
@@ -159,7 +159,7 @@ function Profile(props) {
     try {
       setIsLoading(true);
       const response = await axios.delete(
-        "http://localhost:3001/api/delete-account",
+        "https://twitter-backend-inky.vercel.app/api/delete-account",
         {
           data: { email },
         }
@@ -202,7 +202,7 @@ function Profile(props) {
   const handleLike = async (postId) => {
     try {
       const res = await axios.post(
-        `http://localhost:3001/api/likes/${postId}`,
+        `https://twitter-backend-inky.vercel.app/api/likes/${postId}`,
         { email }
       );
 

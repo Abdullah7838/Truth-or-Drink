@@ -63,11 +63,11 @@ function OnlineDrink({ myusername }) {
     return () => clearInterval(interval);
   }, [roomId, myusername, previousUsers, navigate]);
 
-  useEffect(() => {
-    if (!myusername || myusername === "") {
-      navigate(`/online/${roomId}`);
-    }
-  });
+  // useEffect(() => {
+  //   if (!myusername || myusername === "") {
+  //     navigate(`/online/${roomId}`);
+  //   }
+  // });
 
   useEffect(() => {
     const fetchRoomInfo = () => {
@@ -345,32 +345,32 @@ useEffect(() => {
           )}
         </div>
 
-        <div className="flex items-center gap-3 mt-auto">
-          <button
-            aria-label="Toggle Emoji Picker"
-            type="button"
-            onClick={() => setShowEmoji(!showEmoji)}
-            className="text-xl hover:scale-110 transition"
-            title="Add emoji"
-          >
-            😀
-          </button>
-          <input
-            value={chatMsg}
-            onChange={(e) => setChatMsg(e.target.value)}
-            onKeyDown={handleKeyPress}
-            placeholder="Type your message and hit Enter..."
-            className="flex-1 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all"
-          />
-          <button
-            aria-label="Send Chat"
-            type="button"
-            onClick={sendChat}
-            className="bg-purple-600 text-white px-5 py-2 rounded-xl hover:bg-purple-700 transition"
-          >
-            🚀 Send
-          </button>
-        </div>
+      <div className="flex flex-col sm:flex-row items-center gap-3 mt-auto">
+  <button
+    aria-label="Toggle Emoji Picker"
+    type="button"
+    onClick={() => setShowEmoji(!showEmoji)}
+    className="text-xl hover:scale-110 transition"
+    title="Add emoji"
+  >
+    😀
+  </button>
+  <input
+    value={chatMsg}
+    onChange={(e) => setChatMsg(e.target.value)}
+    onKeyDown={handleKeyPress}
+    placeholder="Type your message and hit Enter..."
+    className="flex-1 p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all w-full"
+  />
+  <button
+    aria-label="Send Chat"
+    type="button"
+    onClick={sendChat}
+    className="bg-purple-600 text-white px-5 py-2 rounded-xl hover:bg-purple-700 transition w-full sm:w-auto"
+  >
+    🚀 Send
+  </button>
+</div>
       </div>
       <button
         aria-label="Go Back"

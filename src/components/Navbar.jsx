@@ -5,20 +5,20 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Ultimate", path: "/ultimate" },
-  { name: "Spinner", path: "/spin" },
-  { name: "Quiz", path: "/quiz" },
-  { name: "Blog", path: "/blogs" },
+  { name: "Truth or drink Online", path: "/truth-or-drink-online" },
+  { name: "Truth or Drink Spinner", path: "/spin" },
+  { name: "Adult Drinking Games", path: "/truth-or-drink-adults" },
+  { name: "Truth or Drink Questions", path: "/blogs" },
   { name: "Community", path: "/community" },
 ];
 
 const dropdownLinks = [
-  { name: "About Us", path: "/about" },
+  { name: "About Us", path: "/about-us" },
   { name: "DMCA", path: "/dmca" },
   { name: "GDPR Compliance", path: "/gdpr-compliance" },
   { name: "Terms and Conditions", path: "/terms-and-conditions" },
   { name: "Disclaimer", path: "/disclaimer" },
-  { name: "Contact Us", path: "/contact" },
+  { name: "Contact Us", path: "/contact-us" },
   { name: "Cookie Policy", path: "/cookie-policy" },
   { name: "Privacy Policy", path: "/privacy-policy" },
 ];
@@ -62,9 +62,9 @@ const Navbar = () => {
                 aria-label={link.name}
                 key={link.name}
                 to={link.path}
-                className={`px-4 py-2 rounded-md transition-all duration-200 tracking-wider ${
+                className={` py-2 text-sm rounded-md transition-all duration-200 tracking-wider ${
                   isActive
-                    ? "bg-gradient-to-r from-purple-400 to-pink-500 text-black font-bold shadow-lg"
+                    ? "bg-gradient-to-r from-purple-400 to-pink-500 text-black font-bold shadow-lg px-2"
                     : "text-white hover:text-cyan-300 hover:scale-105"
                 }`}
               >

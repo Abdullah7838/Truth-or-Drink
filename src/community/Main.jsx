@@ -23,7 +23,7 @@ export default function Main({ email: propEmail, isLogin }) {
   useEffect(() => {
     const fetchAllUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/admin");
+        const res = await axios.get("https://twitter-backend-inky.vercel.app/api/admin");
         const data = res.data.data;
         const userFound = data.some((user) => user.email === email);
         if (!userFound) {
@@ -48,7 +48,7 @@ export default function Main({ email: propEmail, isLogin }) {
     const fetchProfilePhoto = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3001/api/get-profile?email=${email}`
+          `https://twitter-backend-inky.vercel.app/api/get-profile?email=${email}`
         );
         const data = await response.json();
         if (response.ok) {
@@ -70,7 +70,7 @@ export default function Main({ email: propEmail, isLogin }) {
     try {
       const timestamp = new Date().getTime();
       const response = await fetch(
-        `http://localhost:3001/api/get-profile?email=${email}`
+        `https://twitter-backend-inky.vercel.app/api/get-profile?email=${email}`
       );
       const data = await response.json();
       if (response.ok) {
@@ -89,7 +89,7 @@ export default function Main({ email: propEmail, isLogin }) {
   useEffect(() => {
     const fetchAllPosts = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/post");
+        const res = await axios.get("https://twitter-backend-inky.vercel.app/api/post");
         const postsData = res.data.posts.reverse();
         setPosts(postsData);
         setAllPosts(postsData);
@@ -116,7 +116,7 @@ export default function Main({ email: propEmail, isLogin }) {
   const handleLike = async (postId) => {
     try {
       const res = await axios.post(
-        `http://localhost:3001/api/likes/${postId}`,
+        `https://twitter-backend-inky.vercel.app/api/likes/${postId}`,
         {
           email,
         }
@@ -152,7 +152,7 @@ export default function Main({ email: propEmail, isLogin }) {
 
     setIsPosting(true);
     try {
-      const res = await axios.post("http://localhost:3001/api/post", {
+      const res = await axios.post("https://twitter-backend-inky.vercel.app/api/post", {
         email,
         post,
         username: username || email.split("@")[0],
@@ -208,7 +208,7 @@ export default function Main({ email: propEmail, isLogin }) {
   const fetchTrendingHashtags = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/trending-hashtags"
+        "https://twitter-backend-inky.vercel.app/api/trending-hashtags"
       );
       if (response.data && response.data.hashtags) {
         setTrendingHashtags(response.data.hashtags);
@@ -222,13 +222,13 @@ export default function Main({ email: propEmail, isLogin }) {
     try {
       if (activeHashtag === hashtag) {
         setActiveHashtag(null);
-        const res = await axios.get("http://localhost:3001/api/post");
+        const res = await axios.get("https://twitter-backend-inky.vercel.app/api/post");
         const postsData = res.data.posts.reverse();
         setPosts(postsData);
       } else {
         setActiveHashtag(hashtag);
         const res = await axios.get(
-          `http://localhost:3001/api/post?hashtag=${hashtag}`
+          `https://twitter-backend-inky.vercel.app/api/post?hashtag=${hashtag}`
         );
         if (res.data && res.data.posts) {
           const postsData = res.data.posts.reverse();

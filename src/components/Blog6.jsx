@@ -38,7 +38,8 @@ const Blog6 = () => {
     <div className="bg-white text-black px-4 sm:px-8 md:px-12 lg:px-16 py-8 max-w-5xl mx-auto">
     <div className="flex justify-center bg-gray-100 min-h-screen py-8">
       <div className="max-w-3xl w-full px-4 sm:px-6 lg:px-8">
-        <img src={blog6} alt="Night Game" className="w-full h-auto mb-8 rounded-lg" />
+        <img src={blog6} alt="Night Game" className="w-full h-auto mb-8 rounded-lg"   loading="lazy"
+/>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 text-center">
           101+ Deep Truth or Drink Questions to Really Open Up
         </h1>
@@ -234,6 +235,8 @@ aria-label='Play Online'
                                   src={blog.image}
                                   alt={blog.title}
                                   className="w-full h-full object-cover"
+                                    loading="lazy"
+
                                 />
                                 <div className="p-4">
                                   <h3 className="text-xl font-semibold mb-2 text-black">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Home, User, LogOut, Menu, X, Bell, Settings } from "lucide-react";
+import { Home, User, LogOut, Menu, X, Bell, Settings,Gamepad  } from "lucide-react";
 import Notifications from "./Notifications";
 import UserSettings from "./UserSettings";
 
@@ -29,11 +29,18 @@ function Navbar({ logout }) {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
             <Link
+              to="/"
+              className="flex items-center text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium"
+            >
+              <Gamepad className="mr-2" size={22} />
+              Home
+            </Link>
+            <Link
               to="/community/home"
               className="flex items-center text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium"
             >
               <Home className="mr-2" size={22} />
-              Home
+              Community
             </Link>
             
             {/* Notifications Button */}
@@ -107,7 +114,8 @@ function Navbar({ logout }) {
           className="flex items-center px-5 py-3 text-gray-700 hover:bg-gray-100 transition"
         >
           <User className="mr-3" size={20} />
-          {username ? username : 'Profile'}
+          Profile
+          {/* {username ? username : 'Profile'} */}
         </Link>
         
         {/* Mobile Notifications */}

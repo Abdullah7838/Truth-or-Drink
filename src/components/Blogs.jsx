@@ -40,8 +40,8 @@ const blogs = [
     title: " 100 Fun Truth or Drink Questions for Game Night...",
     link:"100-fun-truth-or-drink-questions-for-game-night",
   },
-     {
-        id: 5,
+  {
+        id: 6,
         image: `${blog6}`,
         title: "101+ Deep Truth or Drink Questions to Really Open Up",
         link:"101-deep-truth-or-drink-questions-to-really-open-up",
@@ -88,6 +88,8 @@ function Blogs() {
                 src={blog.image}
                 alt={blog.title}
                 className="w-full h-full object-cover"
+                  loading="lazy"
+
               />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2 text-black h-8">

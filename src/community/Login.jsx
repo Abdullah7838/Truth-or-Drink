@@ -11,7 +11,7 @@ function Login(props) {
     const Login = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:3001/api/login', {
+            const res = await axios.post('https://twitter-backend-inky.vercel.app/api/login', {
                 email, password
             });
             

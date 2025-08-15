@@ -30,7 +30,7 @@ function Account({ logout, Uemail, myemail }) {
         const fetchProfilePhoto = async () => {
             try {
                 const timestamp = new Date().getTime(); 
-                const response = await fetch(`http://localhost:3001/api/get-profile?email=${email}`);
+                const response = await fetch(`https://twitter-backend-inky.vercel.app/api/get-profile?email=${email}`);
                 const data = await response.json();
                 if (response.ok) {
                     setPreview(data.profilePhoto);
@@ -49,7 +49,7 @@ function Account({ logout, Uemail, myemail }) {
 
     useEffect(() => {
         const fetchFollowers = async () => {
-            const followers = await axios.post('http://localhost:3001/api/followers', {
+            const followers = await axios.post('https://twitter-backend-inky.vercel.app/api/followers', {
                 email
             })
             if (followers.length = 0) {
@@ -63,7 +63,7 @@ function Account({ logout, Uemail, myemail }) {
 
     const FollowHandle = async () => {
         try {
-            const res = await axios.post('http://localhost:3001/api/follow', { email, followerEmail });
+            const res = await axios.post('https://twitter-backend-inky.vercel.app/api/follow', { email, followerEmail });
             setHide('hidden')
             setHide2('')
             toast.success('Following');
@@ -78,7 +78,7 @@ function Account({ logout, Uemail, myemail }) {
 
     const UnfollowHandle = async () => {
         try {
-            const res = await axios.post('http://localhost:3001/api/unfollow', { email, followerEmail });
+            const res = await axios.post('https://twitter-backend-inky.vercel.app/api/unfollow', { email, followerEmail });
             setHide('')
             setHide2('hidden')
             toast.success('UnFollowed');
@@ -94,7 +94,7 @@ function Account({ logout, Uemail, myemail }) {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/api/user/${email}`);
+                const response = await axios.get(`https://twitter-backend-inky.vercel.app/api/user/${email}`);
                 setPosts(response.data);
             } catch (error) {
                 console.error("Error fetching posts:", error);
@@ -124,7 +124,7 @@ function Account({ logout, Uemail, myemail }) {
 
     const handleLike = async (postId) => {
         try {
-            const res = await axios.post(`http://localhost:3001/api/likes/${postId}`, {
+            const res = await axios.post(`https://twitter-backend-inky.vercel.app/api/likes/${postId}`, {
                 email,
             });
 
@@ -180,7 +180,7 @@ function Account({ logout, Uemail, myemail }) {
                         {/* User Info */}
                         <div className="text-center mb-6">
                             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                                {localStorage.getItem('username') || email?.split('@')[0]}
+                                {/* {localStorage.getItem('username') || email?.split('@')[0]} */}
                             </h1>
                             <p className="text-gray-600 text-lg">@{email?.split('@')[0]}</p>
                         </div>
