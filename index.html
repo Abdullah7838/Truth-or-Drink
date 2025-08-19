@@ -18,7 +18,8 @@
   <meta property="og:url" content="https://www.truthordrink.pro" />
   <meta name="google-site-verification" content="VzW9kYHmvGBLKju73GqlRabh3l84BPTmbOEz6yTa5Ug" />
   <meta name="google-site-verification" content="BwYx_JHjtLEXG4TD2V4HHF3zwUkwS82bwgFM7Nn0No8" />
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9046613214728168"
+     crossorigin="anonymous"></script>
   <script type="module" src="/src/main.jsx"></script>
 </head>
 
@@ -69,6 +70,24 @@
     document.addEventListener('scroll', loadTrackingScripts, { once: true });
     document.addEventListener('click', loadTrackingScripts, { once: true });
   </script>
+  
+  <script>
+  function loadAdSense() {
+    if (window.adSenseLoaded) return;
+    window.adSenseLoaded = true;
+    const ads = document.createElement('script');
+    ads.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9046613214728168";
+    ads.async = true;
+    ads.crossOrigin = "anonymous";
+    document.head.appendChild(ads);
+    document.removeEventListener('scroll', loadAdSense);
+    document.removeEventListener('click', loadAdSense);
+  }
+  document.addEventListener('scroll', loadAdSense, { once: true, passive: true });
+  document.addEventListener('click', loadAdSense, { once: true });
+  setTimeout(loadAdSense, 15000);
+</script>
+
 </body>
 
 </html>
